@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Retor · Tarjetas de fidelidad en el celular</title>
+<meta name="description" content="Retor pone la tarjeta de fidelidad de tu negocio en el celular de tus clientes, dentro de Apple Wallet y Google Wallet. Sin apps, sin plásticos.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23111'/><text y='68' x='50' text-anchor='middle' font-size='58' font-family='Georgia,serif' fill='%23fff'>R</text></svg>">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --tinta:#15161A; --tinta-suave:#5A5C66; --linea:#E4E5E9;
+  --papel:#FFFFFF; --papel-hueso:#F7F7F9; --acento:#15161A;
+}
+@media (prefers-color-scheme:dark){
+  :root{--tinta:#F2F2F4; --tinta-suave:#9C9EA8; --linea:#2C2E36;
+    --papel:#0E0F13; --papel-hueso:#16171C; --acento:#F2F2F4}
+}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  background:var(--papel);color:var(--tinta);line-height:1.6;
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:44rem;margin:0 auto;padding:0 1.5rem}
+header{padding:2rem 0;border-bottom:1px solid var(--linea)}
+.marca{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:inherit}
+.marca .glifo{width:2.1rem;height:2.1rem;border-radius:.55rem;background:var(--acento);
+  color:var(--papel);display:grid;place-items:center;font-family:Georgia,serif;
+  font-size:1.25rem;font-weight:700;line-height:1}
+.marca .nom{font-size:1.15rem;font-weight:700;letter-spacing:-.01em}
+main{padding:3.5rem 0 4rem}
+h1{font-size:2.3rem;line-height:1.15;letter-spacing:-.025em;margin:0 0 1.1rem;
+  font-weight:700}
+.entrada{font-size:1.12rem;color:var(--tinta-suave);margin:0 0 2.5rem;max-width:34rem}
+h2{font-size:1.25rem;letter-spacing:-.01em;margin:3rem 0 1rem}
+p{margin:0 0 1.1rem}
+.pasos{list-style:none;margin:0 0 1.5rem;padding:0;counter-reset:paso}
+.pasos li{counter-increment:paso;position:relative;padding:0 0 1.15rem 3rem;
+  border-left:1px solid var(--linea);margin-left:.85rem}
+.pasos li:last-child{border-left-color:transparent;padding-bottom:0}
+.pasos li::before{content:counter(paso);position:absolute;left:-.85rem;top:0;
+  width:1.7rem;height:1.7rem;border-radius:50%;background:var(--papel-hueso);
+  border:1px solid var(--linea);display:grid;place-items:center;
+  font-size:.8rem;font-weight:700;color:var(--tinta-suave)}
+.pasos b{display:block;margin-bottom:.15rem}
+.pasos span{color:var(--tinta-suave);font-size:.95rem}
+.tarjetas{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));
+  margin:0 0 1.5rem}
+.tarjeta{background:var(--papel-hueso);border:1px solid var(--linea);
+  border-radius:.8rem;padding:1.15rem 1.25rem}
+.tarjeta h3{font-size:.95rem;margin:0 0 .35rem}
+.tarjeta p{font-size:.9rem;color:var(--tinta-suave);margin:0}
+.aviso{background:var(--papel-hueso);border:1px solid var(--linea);
+  border-radius:.8rem;padding:1.15rem 1.35rem;font-size:.95rem;
+  color:var(--tinta-suave);margin:2.5rem 0 0}
+.aviso b{color:var(--tinta)}
+footer{border-top:1px solid var(--linea);padding:2rem 0 3rem;font-size:.9rem;
+  color:var(--tinta-suave)}
+footer a{color:var(--tinta);text-decoration:none;border-bottom:1px solid var(--linea)}
+footer a:hover{border-bottom-color:var(--tinta)}
+.pie-filas{display:flex;flex-wrap:wrap;gap:.4rem 1.5rem;margin-bottom:1rem}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="marca" href="index.html">
+      <span class="glifo">R</span>
+      <span class="nom">Retor</span>
+    </a>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>La tarjeta de fidelidad de tu negocio, en el celular de tus clientes.</h1>
+  <p class="entrada">
+    Retor sustituye la tarjeta de cartón por una que vive dentro de Apple Wallet
+    y Google Wallet. Tu cliente no descarga ninguna aplicación y no se le pierde
+    en la cartera.
+  </p>
+
+  <h2>Cómo funciona</h2>
+  <ol class="pasos">
+    <li>
+      <b>El cliente escanea un código en tu mostrador</b>
+      <span>Con la cámara del celular. No hay aplicación que instalar.</span>
+    </li>
+    <li>
+      <b>Deja su nombre y su teléfono</b>
+      <span>Toma quince segundos y acepta el aviso de privacidad.</span>
+    </li>
+    <li>
+      <b>Recibe su tarjeta en el Wallet</b>
+      <span>Con el saldo de bienvenida ya acreditado.</span>
+    </li>
+    <li>
+      <b>Tu cajero la escanea en cada compra</b>
+      <span>Desde una tableta o computadora, con una clave por turno. El
+      cliente nunca puede acreditarse puntos solo.</span>
+    </li>
+  </ol>
+
+  <h2>Para quién es</h2>
+  <div class="tarjetas">
+    <div class="tarjeta">
+      <h3>Negocios con clientes que vuelven</h3>
+      <p>Restaurantes, cafeterías, barberías, lavados de autos.</p>
+    </div>
+    <div class="tarjeta">
+      <h3>Con una o con varias sucursales</h3>
+      <p>El cliente acumula en una y usa su premio en otra.</p>
+    </div>
+    <div class="tarjeta">
+      <h3>Puntos o sellos</h3>
+      <p>Puntos por lo que gasta, o sellos por cada visita. Tú eliges.</p>
+    </div>
+  </div>
+
+  <h2>Qué se queda registrado</h2>
+  <p>
+    Cada acumulación y cada canje quedan anotados con la hora, la sucursal y el
+    nombre de quien lo autorizó. Eso le sirve al dueño para dos cosas: saber
+    cuánto regresan sus clientes, y detectar si alguien está regalando puntos.
+  </p>
+
+  <div class="aviso">
+    <b>Retor está en fase piloto.</b> Hoy opera en un solo negocio, un
+    restaurante con tres sucursales en Sonora, México. Si tienes un negocio y te
+    interesa participar, escríbenos: estamos abriendo lugares.
+  </div>
+</main>
+
+<footer class="wrap">
+  <div class="pie-filas">
+    <a href="soporte.html">Atención a clientes</a>
+    <span>Ciudad Obregón, Sonora, México</span>
+  </div>
+  <div>Retor, 2026.</div>
+</footer>
+
+</body>
+</html>
