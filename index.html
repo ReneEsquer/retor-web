@@ -5,162 +5,393 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Retor · Tarjetas de fidelidad en el celular</title>
 <meta name="description" content="Retor pone la tarjeta de fidelidad de tu negocio en el celular de tus clientes, dentro de Apple Wallet y Google Wallet. Sin apps, sin plásticos.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23111'/><text y='68' x='50' text-anchor='middle' font-size='58' font-family='Georgia,serif' fill='%23fff'>R</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23D40711'/><text y='68' x='50' text-anchor='middle' font-size='58' font-family='Georgia,serif' fill='%23fff'>R</text></svg>">
 <style>
 *,*::before,*::after{box-sizing:border-box}
 :root{
   --tinta:#15161A; --tinta-suave:#5A5C66; --linea:#E4E5E9;
-  --papel:#FFFFFF; --papel-hueso:#F7F7F9; --acento:#15161A;
+  --papel:#FFFFFF; --papel-hueso:#F7F7F9; --rojo:#D40711; --rojo-suave:#FBE9EA;
 }
 @media (prefers-color-scheme:dark){
   :root{--tinta:#F2F2F4; --tinta-suave:#9C9EA8; --linea:#2C2E36;
-    --papel:#0E0F13; --papel-hueso:#16171C; --acento:#F2F2F4}
+    --papel:#0E0F13; --papel-hueso:#16171C; --rojo-suave:#2A1315}
 }
 body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
   background:var(--papel);color:var(--tinta);line-height:1.6;
-  -webkit-font-smoothing:antialiased}
-.wrap{max-width:44rem;margin:0 auto;padding:0 1.5rem}
-header{padding:2rem 0;border-bottom:1px solid var(--linea)}
-.marca{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:inherit}
-.marca .glifo{width:2.1rem;height:2.1rem;border-radius:.55rem;background:var(--acento);
-  color:var(--papel);display:grid;place-items:center;font-family:Georgia,serif;
-  font-size:1.25rem;font-weight:700;line-height:1}
-.marca .nom{font-size:1.15rem;font-weight:700;letter-spacing:-.01em}
-main{padding:3.5rem 0 4rem}
-h1{font-size:2.3rem;line-height:1.15;letter-spacing:-.025em;margin:0 0 1.1rem;
-  font-weight:700}
-.entrada{font-size:1.12rem;color:var(--tinta-suave);margin:0 0 2.5rem;max-width:34rem}
-h2{font-size:1.25rem;letter-spacing:-.01em;margin:3rem 0 1rem}
-p{margin:0 0 1.1rem}
-.pasos{list-style:none;margin:0 0 1.5rem;padding:0;counter-reset:paso}
-.pasos li{counter-increment:paso;position:relative;padding:0 0 1.15rem 3rem;
-  border-left:1px solid var(--linea);margin-left:.85rem}
-.pasos li:last-child{border-left-color:transparent;padding-bottom:0}
-.pasos li::before{content:counter(paso);position:absolute;left:-.85rem;top:0;
-  width:1.7rem;height:1.7rem;border-radius:50%;background:var(--papel-hueso);
-  border:1px solid var(--linea);display:grid;place-items:center;
-  font-size:.8rem;font-weight:700;color:var(--tinta-suave)}
-.pasos b{display:block;margin-bottom:.15rem}
-.pasos span{color:var(--tinta-suave);font-size:.95rem}
-.tarjetas{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));
-  margin:0 0 1.5rem}
-.tarjeta{background:var(--papel-hueso);border:1px solid var(--linea);
-  border-radius:.8rem;padding:1.15rem 1.25rem}
-.tarjeta h3{font-size:.95rem;margin:0 0 .35rem}
-.tarjeta p{font-size:.9rem;color:var(--tinta-suave);margin:0}
-.caso{background:var(--papel-hueso);border:1px solid var(--linea);
-  border-radius:.8rem;padding:1.15rem 1.35rem;font-size:.95rem;
-  color:var(--tinta-suave);margin:2.5rem 0 0}
-.caso b{color:var(--tinta)}
-footer{border-top:1px solid var(--linea);padding:2rem 0 3rem;font-size:.9rem;
-  color:var(--tinta-suave)}
-footer a{color:var(--tinta);text-decoration:none;border-bottom:1px solid var(--linea)}
-footer a:hover{border-bottom-color:var(--tinta)}
-.pie-filas{display:flex;flex-wrap:wrap;gap:.4rem 1.5rem;margin-bottom:1rem}
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{width:100%;max-width:64rem;margin:0 auto;padding:0 1.5rem;box-sizing:border-box}
+a{color:inherit}
 
-/* Muestra de la tarjeta real */
-.demo{background:#D40711;color:#fff;border-radius:1.1rem;padding:1.5rem 1.6rem;
-  max-width:20rem;margin:0 0 2.5rem;box-shadow:0 10px 30px rgba(212,7,17,.25)}
-.demo .neg{font-size:1rem;font-weight:700;margin:0 0 .1rem}
-.demo .prog{font-size:.78rem;opacity:.8;margin:0 0 1.1rem}
-.demo .num{font-size:2.6rem;font-weight:700;line-height:1;letter-spacing:-.02em}
-.demo .uni{font-size:.8rem;opacity:.75;margin:.15rem 0 1rem}
+/* ── Encabezado ─────────────────────────────────────────────────── */
+header{padding:1.35rem 0;border-bottom:1px solid var(--linea);position:sticky;
+  top:0;background:var(--papel);z-index:10}
+header .fila{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.marca{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:inherit;
+  flex:none}
+.marca .glifo{width:2rem;height:2rem;border-radius:.5rem;background:var(--rojo);
+  color:#fff;display:grid;place-items:center;font-family:Georgia,serif;
+  font-size:1.15rem;font-weight:700;line-height:1}
+.marca .nom{font-size:1.05rem;font-weight:700;letter-spacing:-.01em}
+nav{display:flex;align-items:center;gap:1.75rem}
+nav a.enlace{font-size:.9rem;font-weight:600;text-decoration:none;color:var(--tinta-suave)}
+nav a.enlace:hover{color:var(--tinta)}
+.btn{display:inline-flex;align-items:center;justify-content:center;
+  padding:.7rem 1.25rem;border-radius:.65rem;font-size:.9rem;font-weight:700;
+  text-decoration:none;border:0;cursor:pointer;font-family:inherit;white-space:nowrap}
+.btn-primario{background:var(--rojo);color:#fff}
+.btn-primario:hover{opacity:.9}
+.btn-fantasma{background:transparent;color:var(--tinta);border:1.5px solid var(--linea)}
+.btn-fantasma:hover{border-color:var(--tinta)}
+.btn-grande{padding:.95rem 1.6rem;font-size:1rem}
+.nav-movil{display:none}
+
+/* ── Portada ────────────────────────────────────────────────────── */
+.hero{padding:4.5rem 0 3.5rem}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:center}
+.etiqueta{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--rojo);background:var(--rojo-suave);
+  padding:.35rem .7rem;border-radius:2rem;margin:0 0 1.1rem}
+.hero h1{font-size:2.7rem;line-height:1.08;letter-spacing:-.03em;margin:0 0 1.15rem;
+  font-weight:800}
+.hero .entrada{font-size:1.15rem;color:var(--tinta-suave);margin:0 0 1.75rem;max-width:30rem}
+.hero .ctas{display:flex;gap:.85rem;flex-wrap:wrap;margin-bottom:1.35rem}
+.hero .fineletra{font-size:.82rem;color:var(--tinta-suave)}
+
+/* Tarjeta de muestra */
+.demo{background:var(--rojo);color:#fff;border-radius:1.25rem;padding:1.6rem 1.7rem;
+  box-shadow:0 20px 50px -12px rgba(212,7,17,.4);transform:rotate(2deg)}
+.demo .neg{font-size:1.02rem;font-weight:700;margin:0 0 .1rem}
+.demo .prog{font-size:.78rem;opacity:.82;margin:0 0 1.2rem}
+.demo .num{font-size:2.75rem;font-weight:800;line-height:1;letter-spacing:-.02em}
+.demo .uni{font-size:.8rem;opacity:.78;margin:.15rem 0 1.1rem}
 .demo .barra{height:.4rem;border-radius:.2rem;background:rgba(255,255,255,.25);
-  overflow:hidden;margin-bottom:1.1rem}
+  overflow:hidden;margin-bottom:1.15rem}
 .demo .barra i{display:block;height:100%;width:68%;background:#fff;border-radius:.2rem}
 .demo .cod{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.85rem;
-  letter-spacing:.12em;background:rgba(255,255,255,.16);padding:.5rem .65rem;
-  border-radius:.45rem;text-align:center}
-.demo-nota{font-size:.85rem;color:var(--tinta-suave);margin:-1.8rem 0 2.5rem}
+  letter-spacing:.12em;background:rgba(255,255,255,.16);padding:.55rem .7rem;
+  border-radius:.5rem;text-align:center}
+
+/* ── Secciones generales ────────────────────────────────────────── */
+section{padding:4rem 0}
+section.raya{border-top:1px solid var(--linea)}
+.centro{text-align:center;max-width:34rem;margin:0 auto 3rem}
+.centro .etiqueta{margin-left:auto;margin-right:auto}
+h2{font-size:1.9rem;letter-spacing:-.02em;margin:0 0 .6rem;font-weight:800}
+.centro p{color:var(--tinta-suave);font-size:1.05rem;margin:0}
+
+/* El problema */
+.problema{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.problema .tarjeta{background:var(--papel-hueso);border:1px solid var(--linea);
+  border-radius:1rem;padding:1.5rem}
+.problema .tarjeta .num{font-size:2.2rem;font-weight:800;color:var(--rojo);
+  line-height:1;margin:0 0 .6rem}
+.problema .tarjeta p{margin:0;font-size:.95rem;color:var(--tinta-suave)}
+
+/* Cómo funciona */
+.pasos{list-style:none;margin:0;padding:0;counter-reset:paso;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.pasos li{counter-increment:paso}
+.pasos .marcador{width:2.3rem;height:2.3rem;border-radius:50%;background:var(--rojo);
+  color:#fff;display:grid;place-items:center;font-weight:800;font-size:1rem;
+  margin-bottom:.9rem}
+.pasos b{display:block;margin-bottom:.3rem;font-size:1.02rem}
+.pasos span{color:var(--tinta-suave);font-size:.92rem;line-height:1.5}
+
+/* Para qué negocios */
+.giros{display:flex;flex-wrap:wrap;gap:.65rem;justify-content:center}
+.giros span{background:var(--papel-hueso);border:1px solid var(--linea);
+  border-radius:2rem;padding:.55rem 1.1rem;font-size:.9rem;font-weight:600}
+
+/* Por qué Retor */
+.porque{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}
+.porque .tarjeta{border:1px solid var(--linea);border-radius:1rem;padding:1.5rem}
+.porque .tarjeta h3{margin:0 0 .5rem;font-size:1.05rem}
+.porque .tarjeta p{margin:0;color:var(--tinta-suave);font-size:.93rem}
+
+/* Preguntas frecuentes */
+.faq{max-width:38rem;margin:0 auto}
+.faq details{border-bottom:1px solid var(--linea);padding:1.15rem 0}
+.faq summary{cursor:pointer;font-weight:700;font-size:1rem;list-style:none;
+  display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';font-size:1.3rem;font-weight:400;color:var(--tinta-suave);
+  flex:none}
+.faq details[open] summary::after{content:'−'}
+.faq p{margin:.75rem 0 0;color:var(--tinta-suave);font-size:.95rem}
+
+/* CTA final */
+.cta-final{background:var(--tinta);color:var(--papel);border-radius:1.5rem;
+  padding:3rem 2.5rem;text-align:center}
+.cta-final h2{color:inherit}
+.cta-final p{color:inherit;opacity:.75;margin:0 0 1.75rem;max-width:28rem;
+  margin-left:auto;margin-right:auto}
+.cta-final .btn-primario{background:var(--rojo)}
+
+/* Pie */
+footer{border-top:1px solid var(--linea);padding:2.5rem 0 3rem;font-size:.88rem;
+  color:var(--tinta-suave)}
+footer .fila{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+footer .enlaces{display:flex;flex-direction:column;gap:.5rem}
+footer a{text-decoration:none}
+footer a:hover{color:var(--tinta)}
+footer .marca{margin-bottom:.6rem}
+footer .copy{margin-top:2rem;font-size:.82rem}
+
+@media (max-width:760px){
+  nav .enlace{display:none}
+  .hero-grid{grid-template-columns:1fr}
+  .hero{padding:2.75rem 0 2.5rem}
+  .hero h1{font-size:2.1rem}
+  .demo{transform:none;max-width:20rem}
+  .problema{grid-template-columns:1fr}
+  .pasos{grid-template-columns:1fr 1fr;gap:2rem 1.25rem}
+  .porque{grid-template-columns:1fr}
+  .cta-final{padding:2.5rem 1.5rem}
+}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="wrap">
+  <div class="wrap fila">
     <a class="marca" href="index.html">
       <span class="glifo">R</span>
       <span class="nom">Retor</span>
     </a>
+    <nav>
+      <a class="enlace" href="#como-funciona">Cómo funciona</a>
+      <a class="enlace" href="#tu-negocio">Para tu negocio</a>
+      <a class="enlace" href="#preguntas">Preguntas</a>
+      <a class="btn btn-primario" href="mailto:reneesquer8@hotmail.com">Contáctanos</a>
+    </nav>
   </div>
 </header>
 
-<main class="wrap">
-  <h1>La tarjeta de fidelidad de tu negocio, en el celular de tus clientes.</h1>
-  <p class="entrada">
-    Retor sustituye la tarjeta de cartón por una que vive dentro de Apple Wallet
-    y Google Wallet. Tu cliente no descarga ninguna aplicación y no se le pierde
-    en la cartera.
-  </p>
+<main>
 
-  <div class="demo">
-    <p class="neg">El Dragón Express</p>
-    <p class="prog">1 punto por cada $1 · 500 puntos = $15</p>
-    <p class="num">340</p>
-    <p class="uni">puntos</p>
-    <div class="barra"><i></i></div>
-    <div class="cod">M97WP67VB4DD</div>
-  </div>
-  <p class="demo-nota">Así se ve la tarjeta dentro del Wallet del cliente.</p>
-
-  <h2>Cómo funciona</h2>
-  <ol class="pasos">
-    <li>
-      <b>El cliente escanea un código en tu mostrador</b>
-      <span>Con la cámara del celular. No hay aplicación que instalar.</span>
-    </li>
-    <li>
-      <b>Deja su nombre y su teléfono</b>
-      <span>Toma quince segundos y acepta el aviso de privacidad.</span>
-    </li>
-    <li>
-      <b>Recibe su tarjeta en el Wallet</b>
-      <span>Con el saldo de bienvenida ya acreditado.</span>
-    </li>
-    <li>
-      <b>Tu cajero la escanea en cada compra</b>
-      <span>Desde una tableta o computadora, con una clave por turno. El
-      cliente nunca puede acreditarse puntos solo.</span>
-    </li>
-  </ol>
-
-  <h2>Para quién es</h2>
-  <div class="tarjetas">
-    <div class="tarjeta">
-      <h3>Negocios con clientes que vuelven</h3>
-      <p>Restaurantes, cafeterías, barberías, lavados de autos.</p>
+  <!-- Portada -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="etiqueta">Programas de lealtad digitales</span>
+        <h1>La tarjeta de puntos que tu cliente ya no va a perder.</h1>
+        <p class="entrada">
+          Retor pone la tarjeta de fidelidad de tu negocio dentro de Apple
+          Wallet y Google Wallet. Tu cliente no descarga ninguna aplicación,
+          y siempre la trae encima porque vive en el mismo lugar que sus
+          boletos de avión y sus tarjetas de embarque.
+        </p>
+        <div class="ctas">
+          <a class="btn btn-primario btn-grande" href="mailto:reneesquer8@hotmail.com">Escríbenos</a>
+          <a class="btn btn-fantasma btn-grande" href="#como-funciona">Ver cómo funciona</a>
+        </div>
+        <p class="fineletra">Sin apps que instalar · Configúralo con nosotros en minutos</p>
+      </div>
+      <div class="demo">
+        <p class="neg">Tu negocio</p>
+        <p class="prog">1 punto por cada $1 · 500 puntos = $15</p>
+        <p class="num">340</p>
+        <p class="uni">puntos</p>
+        <div class="barra"><i></i></div>
+        <div class="cod">M97WP67VB4DD</div>
+      </div>
     </div>
-    <div class="tarjeta">
-      <h3>Con una o con varias sucursales</h3>
-      <p>El cliente acumula en una y usa su premio en otra.</p>
-    </div>
-    <div class="tarjeta">
-      <h3>Puntos o sellos</h3>
-      <p>Puntos por lo que gasta, o sellos por cada visita. Tú eliges.</p>
-    </div>
-  </div>
+  </section>
 
-  <h2>Qué se queda registrado</h2>
-  <p>
-    Cada acumulación y cada canje quedan anotados con la hora, la sucursal y el
-    nombre de quien lo autorizó. Eso le sirve al dueño para dos cosas: saber
-    cuánto regresan sus clientes, y detectar si alguien está regalando puntos.
-  </p>
+  <!-- El problema -->
+  <section class="raya">
+    <div class="wrap">
+      <div class="centro">
+        <span class="etiqueta">El problema</span>
+        <h2>La tarjeta de papel no le sirve a nadie.</h2>
+        <p>Al cliente se le pierde, se le olvida o se le moja. Al dueño no le
+        deja ver nada: no sabe quién regresa, ni cuánto, ni cuándo.</p>
+      </div>
+      <div class="problema">
+        <div class="tarjeta">
+          <p class="num">✕</p>
+          <p>Se pierde en la cartera, se queda en otro pantalón, se moja en
+          la lavadora. El sello o el descuento se pierde con ella.</p>
+        </div>
+        <div class="tarjeta">
+          <p class="num">✕</p>
+          <p>El dueño no tiene ningún dato: no sabe cuántos clientes
+          regresan, ni con qué frecuencia, ni cuánto gastan.</p>
+        </div>
+        <div class="tarjeta">
+          <p class="num">✕</p>
+          <p>Imprimir tarjetas nuevas, sellarlas a mano, revisar que nadie se
+          las acredite de más: tiempo del negocio que se va en administrar
+          papel.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <div class="caso">
-    <b>El Dragón Express, comida china en Sonora, ya usa Retor</b> en sus tres
-    sucursales (Ciudad Obregón y San Carlos) para su programa de puntos.
-    ¿Tienes un negocio y quieres un programa así? Escríbenos.
-  </div>
+  <!-- Cómo funciona -->
+  <section class="raya" id="como-funciona">
+    <div class="wrap">
+      <div class="centro">
+        <span class="etiqueta">La solución</span>
+        <h2>Cómo funciona</h2>
+        <p>Cuatro pasos, del lado del cliente y del lado de tu mostrador.</p>
+      </div>
+      <ol class="pasos">
+        <li>
+          <div class="marcador">1</div>
+          <b>Escanea un código</b>
+          <span>Con la cámara de su celular, en tu mostrador. No hay
+          aplicación que instalar.</span>
+        </li>
+        <li>
+          <div class="marcador">2</div>
+          <b>Deja sus datos</b>
+          <span>Nombre y teléfono. Toma quince segundos y acepta el aviso de
+          privacidad.</span>
+        </li>
+        <li>
+          <div class="marcador">3</div>
+          <b>Recibe su tarjeta</b>
+          <span>En su Wallet, con el saldo de bienvenida ya acreditado.</span>
+        </li>
+        <li>
+          <div class="marcador">4</div>
+          <b>Tu equipo la escanea</b>
+          <span>En cada compra, desde una tableta o computadora con clave por
+          turno. El cliente nunca se acredita solo.</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Para qué negocios -->
+  <section class="raya" id="tu-negocio">
+    <div class="wrap">
+      <div class="centro">
+        <span class="etiqueta">Para tu negocio</span>
+        <h2>Funciona para cualquier negocio con clientes que vuelven</h2>
+        <p>Si tu cliente ideal es alguien que regresa una y otra vez, Retor
+        le da una razón más para hacerlo.</p>
+      </div>
+      <div class="giros">
+        <span>Restaurantes</span>
+        <span>Cafeterías</span>
+        <span>Barberías</span>
+        <span>Salones de belleza</span>
+        <span>Spas</span>
+        <span>Lavados de autos</span>
+        <span>Panaderías</span>
+        <span>Gimnasios</span>
+        <span>Tiendas de ropa</span>
+        <span>Heladerías</span>
+        <span>Farmacias</span>
+        <span>Y más</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Por qué Retor -->
+  <section class="raya">
+    <div class="wrap">
+      <div class="centro">
+        <span class="etiqueta">Por qué Retor</span>
+        <h2>Construido para negocios de verdad</h2>
+      </div>
+      <div class="porque">
+        <div class="tarjeta">
+          <h3>Puntos o sellos, tú eliges</h3>
+          <p>Puntos por lo que el cliente gasta, o un sello por cada visita.
+          El programa se adapta a tu negocio, no al revés.</p>
+        </div>
+        <div class="tarjeta">
+          <h3>Una cuenta, todas tus sucursales</h3>
+          <p>El cliente acumula en una sucursal y canjea en otra sin que
+          nadie tenga que hacer nada.</p>
+        </div>
+        <div class="tarjeta">
+          <h3>El cliente nunca se acredita solo</h3>
+          <p>Cada punto lo otorga tu personal desde un panel con clave, y
+          queda registrado quién lo hizo y cuándo.</p>
+        </div>
+        <div class="tarjeta">
+          <h3>Sin apps, sin fricción</h3>
+          <p>La tarjeta vive en el Wallet que el celular ya trae de fábrica.
+          Nadie descarga nada para tener la tuya.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Preguntas frecuentes -->
+  <section class="raya" id="preguntas">
+    <div class="wrap">
+      <div class="centro">
+        <span class="etiqueta">Preguntas frecuentes</span>
+        <h2>Lo que más nos preguntan</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>¿Mis clientes necesitan descargar una aplicación?</summary>
+          <p>No. La tarjeta se guarda directo en Apple Wallet o Google
+          Wallet, que su celular ya trae instalado.</p>
+        </details>
+        <details>
+          <summary>¿Cuánto cuesta?</summary>
+          <p>Depende del tamaño de tu negocio y cuántas sucursales tienes.
+          Escríbenos y te armamos una propuesta.</p>
+        </details>
+        <details>
+          <summary>¿Necesito saber de tecnología para usarlo?</summary>
+          <p>No. Tu personal solo necesita un navegador y su clave de turno.
+          Nosotros configuramos todo lo demás contigo.</p>
+        </details>
+        <details>
+          <summary>¿Qué pasa si mi cliente pierde el teléfono?</summary>
+          <p>Su saldo no se pierde: está guardado con su número de teléfono,
+          no dentro del aparato. Se recupera buscándolo por teléfono.</p>
+        </details>
+        <details>
+          <summary>¿Qué datos de mis clientes se guardan?</summary>
+          <p>Nombre, teléfono y, si quieren darlo, su cumpleaños. Nada de
+          datos financieros ni sensibles. Más detalle en el
+          <a href="privacidad.html">aviso de privacidad</a>.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section class="raya">
+    <div class="wrap">
+      <div class="cta-final">
+        <h2>¿Tienes un negocio y quieres probarlo?</h2>
+        <p>Cuéntanos de tu negocio y te decimos si Retor te sirve y qué
+        necesitas para arrancar.</p>
+        <a class="btn btn-primario btn-grande" href="mailto:reneesquer8@hotmail.com">Escríbenos</a>
+      </div>
+    </div>
+  </section>
+
 </main>
 
-<footer class="wrap">
-  <div class="pie-filas">
-    <a href="soporte.html">Atención a clientes</a>
-    <a href="privacidad.html">Aviso de privacidad</a>
-    <span>Ciudad Obregón, Sonora, México</span>
+<footer>
+  <div class="wrap fila">
+    <div>
+      <a class="marca" href="index.html" style="display:flex;align-items:center;gap:.5rem;text-decoration:none;color:inherit;font-weight:700">
+        <span class="glifo" style="width:1.6rem;height:1.6rem;border-radius:.4rem;background:var(--rojo);color:#fff;display:grid;place-items:center;font-family:Georgia,serif;font-size:.95rem">R</span>
+        Retor
+      </a>
+      <p style="max-width:16rem;margin:.75rem 0 0">Programas de lealtad digitales
+      para negocios pequeños, en Sonora, México.</p>
+    </div>
+    <div class="enlaces">
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#tu-negocio">Para tu negocio</a>
+      <a href="soporte.html">Atención a clientes</a>
+      <a href="privacidad.html">Aviso de privacidad</a>
+    </div>
   </div>
-  <div>Retor, 2026.</div>
+  <div class="copy">Retor, 2026 · Ciudad Obregón, Sonora, México</div>
 </footer>
 
 </body>
