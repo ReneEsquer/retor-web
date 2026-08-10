@@ -5,26 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Aviso de privacidad · Retor</title>
 <meta name="description" content="Aviso de privacidad de Retor: qué datos recabamos, para qué los usamos y cómo ejercer tus derechos ARCO.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23111'/><text y='68' x='50' text-anchor='middle' font-size='58' font-family='Georgia,serif' fill='%23fff'>R</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='26' fill='%231B62A8'/><g fill='%23fff' fill-rule='evenodd'><path d='M28 22h22a14 14 0 0 1 0 28H41v28H28V22Z'/><rect x='41' y='32' width='12' height='8' rx='4'/></g><path d='M44 50h12l13 28H57L44 50Z' fill='%23fff'/><g fill='none' stroke='%231B62A8' stroke-width='11' stroke-linecap='round' stroke-linejoin='round'><path d='M10 44h74'/><path d='M77 37l7 7-7 7'/><path d='M90 58H16'/><path d='M23 51l-7 7 7 7'/></g><g fill='none' stroke='%23F2C75B' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'><path d='M10 44h74'/><path d='M77 37l7 7-7 7'/><path d='M90 58H16'/><path d='M23 51l-7 7 7 7'/></g></svg>">
 <style>
 *,*::before,*::after{box-sizing:border-box}
 :root{
-  --tinta:#15161A; --tinta-suave:#5A5C66; --linea:#E4E5E9;
-  --papel:#FFFFFF; --papel-hueso:#F7F7F9; --acento:#15161A;
-}
-@media (prefers-color-scheme:dark){
-  :root{--tinta:#F2F2F4; --tinta-suave:#9C9EA8; --linea:#2C2E36;
-    --papel:#0E0F13; --papel-hueso:#16171C; --acento:#F2F2F4}
+  --tinta:#152238; --tinta-suave:#5A6880; --linea:#DEE5EE;
+  --papel:#FFFFFF; --papel-hueso:#F3F7FC;
+  --azul:#1B62A8; --azul-texto:#17558F; --azul-suave:#E7F0F9;
 }
 body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
   background:var(--papel);color:var(--tinta);line-height:1.6;
   -webkit-font-smoothing:antialiased}
 .wrap{max-width:44rem;margin:0 auto;padding:0 1.5rem}
+:focus-visible{outline:3px solid var(--azul);outline-offset:3px;border-radius:.35rem}
 header{padding:2rem 0;border-bottom:1px solid var(--linea)}
 .marca{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:inherit}
-.marca .glifo{width:2.1rem;height:2.1rem;border-radius:.55rem;background:var(--acento);
-  color:var(--papel);display:grid;place-items:center;font-family:Georgia,serif;
-  font-size:1.25rem;font-weight:700;line-height:1}
+.marca .glifo{width:2.1rem;height:2.1rem;flex:none;display:block}
 .marca .nom{font-size:1.15rem;font-weight:700;letter-spacing:-.01em}
 main{padding:3.5rem 0 4rem}
 h1{font-size:2.1rem;line-height:1.15;letter-spacing:-.025em;margin:0 0 1.1rem;
@@ -32,11 +28,13 @@ h1{font-size:2.1rem;line-height:1.15;letter-spacing:-.025em;margin:0 0 1.1rem;
 .entrada{font-size:1.1rem;color:var(--tinta-suave);margin:0 0 2.5rem;max-width:34rem}
 h2{font-size:1.1rem;letter-spacing:-.01em;margin:2.25rem 0 .75rem}
 p{margin:0 0 1.1rem;font-size:.97rem}
+main a{color:var(--azul);text-decoration:none;border-bottom:1px solid var(--azul-suave)}
+main a:hover{border-bottom-color:var(--azul)}
 .fecha{font-size:.85rem;color:var(--tinta-suave);margin:-1.5rem 0 2.5rem}
 footer{border-top:1px solid var(--linea);padding:2rem 0 3rem;font-size:.9rem;
   color:var(--tinta-suave)}
 footer a{color:var(--tinta);text-decoration:none;border-bottom:1px solid var(--linea)}
-footer a:hover{border-bottom-color:var(--tinta)}
+footer a:hover{color:var(--azul);border-bottom-color:var(--azul)}
 .pie-filas{display:flex;flex-wrap:wrap;gap:.4rem 1.5rem;margin-bottom:1rem}
 </style>
 </head>
@@ -45,7 +43,22 @@ footer a:hover{border-bottom-color:var(--tinta)}
 <header>
   <div class="wrap">
     <a class="marca" href="index.html">
-      <span class="glifo">R</span>
+      <svg class="glifo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="100" height="100" rx="26" fill="#1B62A8"/>
+        <g fill="#fff" fill-rule="evenodd">
+          <path d="M28 22h22a14 14 0 0 1 0 28H41v28H28V22Z"/>
+          <rect x="41" y="32" width="12" height="8" rx="4"/>
+        </g>
+        <path d="M44 50h12l13 28H57L44 50Z" fill="#fff"/>
+        <g fill="none" stroke="#1B62A8" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 44h74"/><path d="M77 37l7 7-7 7"/>
+          <path d="M90 58H16"/><path d="M23 51l-7 7 7 7"/>
+        </g>
+        <g fill="none" stroke="#F2C75B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 44h74"/><path d="M77 37l7 7-7 7"/>
+          <path d="M90 58H16"/><path d="M23 51l-7 7 7 7"/>
+        </g>
+      </svg>
       <span class="nom">Retor</span>
     </a>
   </div>

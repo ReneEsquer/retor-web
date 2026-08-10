@@ -5,148 +5,260 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Retor · Tarjetas de fidelidad en el celular</title>
 <meta name="description" content="Retor pone la tarjeta de fidelidad de tu negocio en el celular de tus clientes, dentro de Apple Wallet y Google Wallet. Sin apps, sin plásticos.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23D40711'/><text y='68' x='50' text-anchor='middle' font-size='58' font-family='Georgia,serif' fill='%23fff'>R</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='26' fill='%231B62A8'/><g fill='%23fff' fill-rule='evenodd'><path d='M28 22h22a14 14 0 0 1 0 28H41v28H28V22Z'/><rect x='41' y='32' width='12' height='8' rx='4'/></g><path d='M44 50h12l13 28H57L44 50Z' fill='%23fff'/><g fill='none' stroke='%231B62A8' stroke-width='11' stroke-linecap='round' stroke-linejoin='round'><path d='M10 44h74'/><path d='M77 37l7 7-7 7'/><path d='M90 58H16'/><path d='M23 51l-7 7 7 7'/></g><g fill='none' stroke='%23F2C75B' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'><path d='M10 44h74'/><path d='M77 37l7 7-7 7'/><path d='M90 58H16'/><path d='M23 51l-7 7 7 7'/></g></svg>">
 <style>
 *,*::before,*::after{box-sizing:border-box}
 :root{
-  --tinta:#15161A; --tinta-suave:#5A5C66; --linea:#E4E5E9;
-  --papel:#FFFFFF; --papel-hueso:#F7F7F9; --rojo:#D40711; --rojo-suave:#FBE9EA;
-}
-@media (prefers-color-scheme:dark){
-  :root{--tinta:#F2F2F4; --tinta-suave:#9C9EA8; --linea:#2C2E36;
-    --papel:#0E0F13; --papel-hueso:#16171C; --rojo-suave:#2A1315}
+  --tinta:#152238; --tinta-suave:#5A6880; --linea:#DEE5EE;
+  --papel:#FFFFFF; --papel-hueso:#F3F7FC;
+  --azul:#1B62A8; --azul-texto:#17558F; --azul-hondo:#0E3D6B;
+  --azul-suave:#E7F0F9; --dorado:#F2C75B;
 }
 body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
   background:var(--papel);color:var(--tinta);line-height:1.6;
   -webkit-font-smoothing:antialiased;overflow-x:hidden}
-.wrap{width:100%;max-width:64rem;margin:0 auto;padding:0 1.5rem;box-sizing:border-box}
+html{scroll-behavior:smooth}
+.wrap{width:100%;max-width:64rem;margin:0 auto;padding:0 1.5rem}
 a{color:inherit}
+:focus-visible{outline:3px solid var(--azul);outline-offset:3px;border-radius:.35rem}
 
 /* ── Encabezado ─────────────────────────────────────────────────── */
 header{padding:1.35rem 0;border-bottom:1px solid var(--linea);position:sticky;
-  top:0;background:var(--papel);z-index:10}
+  top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);z-index:10}
 header .fila{display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.marca{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:inherit;
-  flex:none}
-.marca .glifo{width:2rem;height:2rem;border-radius:.5rem;background:var(--rojo);
-  color:#fff;display:grid;place-items:center;font-family:Georgia,serif;
-  font-size:1.15rem;font-weight:700;line-height:1}
-.marca .nom{font-size:1.05rem;font-weight:700;letter-spacing:-.01em}
-nav{display:flex;align-items:center;gap:1.75rem}
-nav a.enlace{font-size:.9rem;font-weight:600;text-decoration:none;color:var(--tinta-suave)}
-nav a.enlace:hover{color:var(--tinta)}
+.marca{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:inherit;flex:none}
+.marca .glifo{width:2.1rem;height:2.1rem;flex:none;display:block}
+.marca .nom{font-size:1.08rem;font-weight:700;letter-spacing:-.015em}
+nav{display:flex;align-items:center;gap:1.6rem}
+nav a.enlace{font-size:.9rem;font-weight:600;text-decoration:none;color:var(--tinta-suave);
+  transition:color .18s}
+nav a.enlace:hover{color:var(--azul)}
 .btn{display:inline-flex;align-items:center;justify-content:center;
   padding:.7rem 1.25rem;border-radius:.65rem;font-size:.9rem;font-weight:700;
-  text-decoration:none;border:0;cursor:pointer;font-family:inherit;white-space:nowrap}
-.btn-primario{background:var(--rojo);color:#fff}
-.btn-primario:hover{opacity:.9}
+  text-decoration:none;border:0;cursor:pointer;font-family:inherit;white-space:nowrap;
+  transition:transform .18s, box-shadow .18s, background .18s}
+.btn-primario{background:var(--azul);color:#fff;box-shadow:0 6px 16px -8px rgba(27,98,168,.7)}
+.btn-primario:hover{background:#17558F;transform:translateY(-1px);
+  box-shadow:0 10px 22px -10px rgba(27,98,168,.85)}
 .btn-fantasma{background:transparent;color:var(--tinta);border:1.5px solid var(--linea)}
-.btn-fantasma:hover{border-color:var(--tinta)}
+.btn-fantasma:hover{border-color:var(--azul);color:var(--azul)}
 .btn-grande{padding:.95rem 1.6rem;font-size:1rem}
-.nav-movil{display:none}
 
 /* ── Portada ────────────────────────────────────────────────────── */
-.hero{padding:4.5rem 0 3.5rem}
+.hero{padding:4.5rem 0 3rem}
 .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:center}
-.etiqueta{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.06em;
-  text-transform:uppercase;color:var(--rojo);background:var(--rojo-suave);
-  padding:.35rem .7rem;border-radius:2rem;margin:0 0 1.1rem}
-.hero h1{font-size:2.7rem;line-height:1.08;letter-spacing:-.03em;margin:0 0 1.15rem;
-  font-weight:800}
+.etiqueta{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--azul-texto);background:var(--azul-suave);
+  padding:.35rem .75rem;border-radius:2rem;margin:0 0 1.1rem}
+.hero h1{font-size:2.8rem;line-height:1.07;letter-spacing:-.032em;margin:0 0 1.15rem;
+  font-weight:800;text-wrap:balance}
 .hero .entrada{font-size:1.15rem;color:var(--tinta-suave);margin:0 0 1.75rem;max-width:30rem}
-.hero .ctas{display:flex;gap:.85rem;flex-wrap:wrap;margin-bottom:1.35rem}
-.hero .fineletra{font-size:.82rem;color:var(--tinta-suave)}
+.hero .ctas{display:flex;gap:.85rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.compat{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;font-size:.8rem;
+  color:var(--tinta-suave)}
+.compat .chip{display:inline-flex;align-items:center;gap:.35rem;background:var(--papel-hueso);
+  border:1px solid var(--linea);border-radius:2rem;padding:.32rem .75rem;font-weight:600;
+  color:var(--tinta)}
+.compat .chip svg{width:.85rem;height:.85rem;fill:none;stroke:var(--azul);stroke-width:2.4;
+  stroke-linecap:round;stroke-linejoin:round}
 
-/* Tarjeta de muestra */
-.demo{background:var(--rojo);color:#fff;border-radius:1.25rem;padding:1.6rem 1.7rem;
-  box-shadow:0 20px 50px -12px rgba(212,7,17,.4);transform:rotate(2deg)}
+/* Tarjeta de la portada */
+.demo{background:var(--azul);color:#fff;border-radius:1.25rem;padding:1.6rem 1.7rem;
+  box-shadow:0 24px 55px -14px rgba(14,61,107,.45);transform:rotate(2deg);
+  animation:flotar 7s ease-in-out infinite}
+@keyframes flotar{0%,100%{transform:rotate(2deg) translateY(0)}
+  50%{transform:rotate(2deg) translateY(-9px)}}
 .demo .neg{font-size:1.02rem;font-weight:700;margin:0 0 .1rem}
 .demo .prog{font-size:.78rem;opacity:.82;margin:0 0 1.2rem}
-.demo .num{font-size:2.75rem;font-weight:800;line-height:1;letter-spacing:-.02em}
+.demo .num{font-size:2.75rem;font-weight:800;line-height:1;letter-spacing:-.02em;
+  color:var(--dorado);font-variant-numeric:tabular-nums}
 .demo .uni{font-size:.8rem;opacity:.78;margin:.15rem 0 1.1rem}
 .demo .barra{height:.4rem;border-radius:.2rem;background:rgba(255,255,255,.25);
   overflow:hidden;margin-bottom:1.15rem}
-.demo .barra i{display:block;height:100%;width:68%;background:#fff;border-radius:.2rem}
-.demo .cod{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.85rem;
-  letter-spacing:.12em;background:rgba(255,255,255,.16);padding:.55rem .7rem;
-  border-radius:.5rem;text-align:center}
+.demo .barra i{display:block;height:100%;width:68%;background:var(--dorado);border-radius:.2rem}
 
-/* ── Secciones generales ────────────────────────────────────────── */
-section{padding:4rem 0}
+/* ── Franja de confianza ────────────────────────────────────────── */
+.confianza{background:var(--papel-hueso);border-top:1px solid var(--linea);
+  border-bottom:1px solid var(--linea);padding:1.5rem 0}
+.confianza .fila{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.confianza .dato{display:flex;align-items:flex-start;gap:.7rem}
+.confianza svg{width:1.25rem;height:1.25rem;flex:none;margin-top:.15rem;fill:none;
+  stroke:var(--azul);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.confianza b{display:block;font-size:.92rem;line-height:1.35}
+.confianza span{font-size:.82rem;color:var(--tinta-suave);line-height:1.45}
+
+/* ── Secciones ──────────────────────────────────────────────────── */
+section{padding:4.25rem 0}
 section.raya{border-top:1px solid var(--linea)}
 .centro{text-align:center;max-width:34rem;margin:0 auto 3rem}
 .centro .etiqueta{margin-left:auto;margin-right:auto}
-h2{font-size:1.9rem;letter-spacing:-.02em;margin:0 0 .6rem;font-weight:800}
+h2{font-size:1.95rem;letter-spacing:-.025em;margin:0 0 .6rem;font-weight:800;
+  text-wrap:balance}
 .centro p{color:var(--tinta-suave);font-size:1.05rem;margin:0}
 
 /* El problema */
 .problema{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
 .problema .tarjeta{background:var(--papel-hueso);border:1px solid var(--linea);
   border-radius:1rem;padding:1.5rem}
-.problema .tarjeta .num{font-size:2.2rem;font-weight:800;color:var(--rojo);
-  line-height:1;margin:0 0 .6rem}
+.problema .tarjeta .marca-x{width:2.1rem;height:2.1rem;border-radius:50%;
+  background:var(--azul-suave);display:grid;place-items:center;margin-bottom:.85rem}
+.problema .tarjeta .marca-x svg{width:1.05rem;height:1.05rem;fill:none;
+  stroke:var(--azul-texto);stroke-width:2.6;stroke-linecap:round}
 .problema .tarjeta p{margin:0;font-size:.95rem;color:var(--tinta-suave)}
 
 /* Cómo funciona */
-.pasos{list-style:none;margin:0;padding:0;counter-reset:paso;
-  display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
-.pasos li{counter-increment:paso}
-.pasos .marcador{width:2.3rem;height:2.3rem;border-radius:50%;background:var(--rojo);
+.pasos{list-style:none;margin:0;padding:0;display:grid;
+  grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.pasos .marcador{width:2.4rem;height:2.4rem;border-radius:50%;background:var(--azul);
   color:#fff;display:grid;place-items:center;font-weight:800;font-size:1rem;
-  margin-bottom:.9rem}
+  margin-bottom:.9rem;box-shadow:0 6px 14px -7px rgba(27,98,168,.8)}
 .pasos b{display:block;margin-bottom:.3rem;font-size:1.02rem}
 .pasos span{color:var(--tinta-suave);font-size:.92rem;line-height:1.5}
 
-/* Para qué negocios */
+/* Qué incluye */
+.incluye{display:grid;grid-template-columns:1fr 1fr;gap:.85rem 2rem;max-width:46rem;
+  margin:0 auto}
+.incluye div{display:flex;align-items:flex-start;gap:.7rem;padding:.75rem .25rem;
+  border-bottom:1px solid var(--linea)}
+.incluye svg{width:1.15rem;height:1.15rem;flex:none;margin-top:.2rem;fill:none;
+  stroke:var(--azul);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.incluye p{margin:0;font-size:.94rem}
+
+/* Giros */
 .giros{display:flex;flex-wrap:wrap;gap:.65rem;justify-content:center}
 .giros span{background:var(--papel-hueso);border:1px solid var(--linea);
-  border-radius:2rem;padding:.55rem 1.1rem;font-size:.9rem;font-weight:600}
+  border-radius:2rem;padding:.55rem 1.1rem;font-size:.9rem;font-weight:600;
+  transition:border-color .18s, color .18s}
+.giros span:hover{border-color:var(--azul);color:var(--azul)}
+
+/* Tarjetas de ejemplo */
+.pases{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.pase{background:var(--acento);color:#fff;border-radius:1.15rem;overflow:hidden;
+  display:flex;flex-direction:column;box-shadow:0 16px 34px -18px rgba(11,32,58,.55);
+  transition:transform .22s, box-shadow .22s}
+.pase:hover{transform:translateY(-5px);box-shadow:0 24px 44px -20px rgba(11,32,58,.65)}
+.pase-top{display:flex;align-items:center;gap:.7rem;padding:1.15rem 1.2rem .85rem}
+.pase-logo{width:2.4rem;height:2.4rem;flex:none;border-radius:50%;
+  background:rgba(255,255,255,.16);display:grid;place-items:center}
+.pase-logo svg{width:1.3rem;height:1.3rem;fill:none;stroke:#fff;stroke-width:1.7;
+  stroke-linecap:round;stroke-linejoin:round}
+.pase-neg{font-size:.98rem;font-weight:700;margin:0;line-height:1.25}
+.pase-giro{font-size:.7rem;margin:0;opacity:.72;text-transform:uppercase;
+  letter-spacing:.08em;font-weight:600}
+.pase-cuerpo{padding:0 1.2rem 1.05rem;flex:1}
+.pase-rot{font-size:.66rem;text-transform:uppercase;letter-spacing:.09em;
+  opacity:.68;margin:0 0 .3rem;font-weight:700}
+.pase-saldo{display:flex;align-items:baseline;gap:.4rem;margin-bottom:.7rem}
+.pase-num{font-size:2.4rem;font-weight:800;line-height:1;letter-spacing:-.02em;
+  color:var(--dorado);font-variant-numeric:tabular-nums}
+.pase-uni{font-size:.8rem;opacity:.8}
+.pase-barra{height:.32rem;border-radius:.2rem;background:rgba(255,255,255,.22);
+  overflow:hidden;margin-bottom:.65rem}
+.pase-barra i{display:block;height:100%;background:var(--dorado);border-radius:.2rem}
+.pase-prog{font-size:.74rem;opacity:.8;margin:0;line-height:1.45}
+
+/* Franja del código: blanca con barras oscuras, como se ve en el celular */
+.pase-codigo{background:#fff;border-radius:.6rem;padding:.55rem .6rem .4rem;
+  margin:0 .75rem .75rem}
+.pase-codigo .barras{height:2rem;margin-bottom:.3rem;
+  background-image:repeating-linear-gradient(90deg,
+    #14181F 0 2px, transparent 2px 4px,
+    #14181F 4px 5px, transparent 5px 9px,
+    #14181F 9px 12px, transparent 12px 14px)}
+.pase-codigo .serie{display:block;text-align:center;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.66rem;
+  letter-spacing:.12em;color:#4A5468}
+.demo .pase-codigo{margin:0}
 
 /* Por qué Retor */
 .porque{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}
-.porque .tarjeta{border:1px solid var(--linea);border-radius:1rem;padding:1.5rem}
+.porque .tarjeta{border:1px solid var(--linea);border-radius:1rem;padding:1.5rem;
+  transition:border-color .2s, transform .2s}
+.porque .tarjeta:hover{border-color:var(--azul);transform:translateY(-3px)}
 .porque .tarjeta h3{margin:0 0 .5rem;font-size:1.05rem}
 .porque .tarjeta p{margin:0;color:var(--tinta-suave);font-size:.93rem}
 
-/* Preguntas frecuentes */
+/* Preguntas */
 .faq{max-width:38rem;margin:0 auto}
 .faq details{border-bottom:1px solid var(--linea);padding:1.15rem 0}
 .faq summary{cursor:pointer;font-weight:700;font-size:1rem;list-style:none;
   display:flex;justify-content:space-between;align-items:center;gap:1rem}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:'+';font-size:1.3rem;font-weight:400;color:var(--tinta-suave);
-  flex:none}
-.faq details[open] summary::after{content:'−'}
+.faq summary:hover{color:var(--azul)}
+.faq summary::after{content:'+';font-size:1.35rem;font-weight:400;
+  color:var(--tinta-suave);flex:none}
+.faq details[open] summary::after{content:'−';color:var(--azul)}
 .faq p{margin:.75rem 0 0;color:var(--tinta-suave);font-size:.95rem}
 
+/* Contacto */
+.contacto{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;
+  max-width:52rem;margin:0 auto}
+.via{background:var(--papel-hueso);border:1px solid var(--linea);border-radius:1rem;
+  padding:1.4rem 1.4rem 1.5rem;text-align:center}
+.via .ico{width:2.5rem;height:2.5rem;border-radius:50%;background:var(--azul-suave);
+  display:grid;place-items:center;margin:0 auto .85rem}
+.via .ico svg{width:1.2rem;height:1.2rem;fill:none;stroke:var(--azul-texto);
+  stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.via .rot{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--tinta-suave);font-weight:700;margin:0 0 .35rem}
+.via .dato{font-size:1rem;font-weight:700;margin:0 0 .3rem;word-break:break-word}
+.via .dato a{text-decoration:none}
+.via .dato a:hover{color:var(--azul)}
+.via .nota{font-size:.83rem;color:var(--tinta-suave);margin:0}
+
 /* CTA final */
-.cta-final{background:var(--tinta);color:var(--papel);border-radius:1.5rem;
-  padding:3rem 2.5rem;text-align:center}
+.cta-final{background:var(--azul-hondo);color:#fff;border-radius:1.5rem;
+  padding:3.25rem 2.5rem;text-align:center}
+.cta-final .etiqueta{background:rgba(242,199,91,.16);color:var(--dorado)}
 .cta-final h2{color:inherit}
-.cta-final p{color:inherit;opacity:.75;margin:0 0 1.75rem;max-width:28rem;
-  margin-left:auto;margin-right:auto}
-.cta-final .btn-primario{background:var(--rojo)}
+.cta-final p{color:rgba(255,255,255,.78);margin:0 auto 1.85rem;max-width:29rem}
+.cta-final .btn-primario{background:var(--dorado);color:#152238;
+  box-shadow:0 8px 22px -10px rgba(242,199,91,.75)}
+.cta-final .btn-primario:hover{background:#F7D175;color:#152238}
 
 /* Pie */
-footer{border-top:1px solid var(--linea);padding:2.5rem 0 3rem;font-size:.88rem;
+footer{border-top:1px solid var(--linea);padding:2.75rem 0 3rem;font-size:.88rem;
   color:var(--tinta-suave)}
-footer .fila{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+footer .fila{display:flex;justify-content:space-between;flex-wrap:wrap;gap:2rem}
 footer .enlaces{display:flex;flex-direction:column;gap:.5rem}
-footer a{text-decoration:none}
-footer a:hover{color:var(--tinta)}
+footer .enlaces b{color:var(--tinta);font-size:.82rem;text-transform:uppercase;
+  letter-spacing:.07em;margin-bottom:.15rem}
+footer a{text-decoration:none;transition:color .18s}
+footer a:hover{color:var(--azul)}
 footer .marca{margin-bottom:.6rem}
-footer .copy{margin-top:2rem;font-size:.82rem}
+footer .copy{margin-top:2.25rem;padding-top:1.5rem;border-top:1px solid var(--linea);
+  font-size:.82rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.75rem}
+
+/* A propósito NO hay animaciones de aparición sobre el texto.
+   Cualquier efecto que arranque en opacidad cero corre el riesgo de dejar
+   contenido invisible si el navegador congela el reloj de animaciones. El
+   movimiento del sitio vive solo en la tarjeta de la portada y en los estados
+   al pasar el ratón, que nunca esconden nada. */
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .demo{animation:none}
+  *{transition-duration:.01ms !important}
+}
 
 @media (max-width:760px){
   nav .enlace{display:none}
   .hero-grid{grid-template-columns:1fr}
-  .hero{padding:2.75rem 0 2.5rem}
+  .hero{padding:2.75rem 0 2.25rem}
   .hero h1{font-size:2.1rem}
-  .demo{transform:none;max-width:20rem}
+  .demo{transform:none;max-width:20rem;animation:none}
+  .confianza .fila{grid-template-columns:1fr;gap:1.1rem}
   .problema{grid-template-columns:1fr}
   .pasos{grid-template-columns:1fr 1fr;gap:2rem 1.25rem}
+  .incluye{grid-template-columns:1fr}
+  .pases{grid-template-columns:1fr 1fr}
   .porque{grid-template-columns:1fr}
+  .contacto{grid-template-columns:1fr}
   .cta-final{padding:2.5rem 1.5rem}
+}
+@media (max-width:560px){
+  .pases{grid-template-columns:1fr;max-width:22rem;margin:0 auto}
+  .pasos{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -155,21 +267,37 @@ footer .copy{margin-top:2rem;font-size:.82rem}
 <header>
   <div class="wrap fila">
     <a class="marca" href="index.html">
-      <span class="glifo">R</span>
+      <svg class="glifo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="100" height="100" rx="26" fill="#1B62A8"/>
+        <g fill="#fff" fill-rule="evenodd">
+          <path d="M28 22h22a14 14 0 0 1 0 28H41v28H28V22Z"/>
+          <rect x="41" y="32" width="12" height="8" rx="4"/>
+        </g>
+        <path d="M44 50h12l13 28H57L44 50Z" fill="#fff"/>
+        <g fill="none" stroke="#1B62A8" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 44h74"/><path d="M77 37l7 7-7 7"/>
+          <path d="M90 58H16"/><path d="M23 51l-7 7 7 7"/>
+        </g>
+        <g fill="none" stroke="#F2C75B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 44h74"/><path d="M77 37l7 7-7 7"/>
+          <path d="M90 58H16"/><path d="M23 51l-7 7 7 7"/>
+        </g>
+      </svg>
       <span class="nom">Retor</span>
     </a>
     <nav>
       <a class="enlace" href="#como-funciona">Cómo funciona</a>
-      <a class="enlace" href="#tu-negocio">Para tu negocio</a>
+      <a class="enlace" href="#ejemplos">Ejemplos</a>
       <a class="enlace" href="#preguntas">Preguntas</a>
-      <a class="btn btn-primario" href="mailto:reneesquer8@hotmail.com">Contáctanos</a>
+      <a class="enlace" href="soporte.html">Atención a clientes</a>
+      <a class="btn btn-primario" href="#contacto">Contáctanos</a>
     </nav>
   </div>
 </header>
 
 <main>
 
-  <!-- Portada -->
+  <!-- ══ Portada ══ -->
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
@@ -182,10 +310,20 @@ footer .copy{margin-top:2rem;font-size:.82rem}
           boletos de avión y sus tarjetas de embarque.
         </p>
         <div class="ctas">
-          <a class="btn btn-primario btn-grande" href="mailto:reneesquer8@hotmail.com">Escríbenos</a>
+          <a class="btn btn-primario btn-grande" href="#contacto">Escríbenos</a>
           <a class="btn btn-fantasma btn-grande" href="#como-funciona">Ver cómo funciona</a>
         </div>
-        <p class="fineletra">Sin apps que instalar · Configúralo con nosotros en minutos</p>
+        <div class="compat">
+          <span class="chip">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12 5.5 5.5L20 7"/></svg>
+            Apple Wallet
+          </span>
+          <span class="chip">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12 5.5 5.5L20 7"/></svg>
+            Google Wallet
+          </span>
+          <span>Sin instalar nada</span>
+        </div>
       </div>
       <div class="demo">
         <p class="neg">Tu negocio</p>
@@ -193,13 +331,51 @@ footer .copy{margin-top:2rem;font-size:.82rem}
         <p class="num">340</p>
         <p class="uni">puntos</p>
         <div class="barra"><i></i></div>
-        <div class="cod">M97WP67VB4DD</div>
+        <div class="pase-codigo">
+          <div class="barras"></div>
+          <span class="serie">M97WP67VB4DD</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- El problema -->
-  <section class="raya">
+  <!-- ══ Franja de confianza ══ -->
+  <div class="confianza">
+    <div class="wrap fila">
+      <div class="dato">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 3l7 3v6c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V6l7-3Z"/>
+          <path d="m9 12 2 2 4-4"/>
+        </svg>
+        <div>
+          <b>Aviso de privacidad conforme a la ley</b>
+          <span>Tratamos los datos según la LFPDPPP, la ley mexicana de protección de datos.</span>
+        </div>
+      </div>
+      <div class="dato">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="4" y="10" width="16" height="10" rx="2"/>
+          <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
+        </svg>
+        <div>
+          <b>El cliente nunca se acredita solo</b>
+          <span>Cada punto lo otorga tu personal desde un panel protegido con clave.</span>
+        </div>
+      </div>
+      <div class="dato">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 5h16M4 12h16M4 19h10"/>
+        </svg>
+        <div>
+          <b>Todo movimiento queda registrado</b>
+          <span>Quién acreditó, cuánto, en qué sucursal y a qué hora. Sin borrones.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ El problema ══ -->
+  <section class="">
     <div class="wrap">
       <div class="centro">
         <span class="etiqueta">El problema</span>
@@ -209,26 +385,25 @@ footer .copy{margin-top:2rem;font-size:.82rem}
       </div>
       <div class="problema">
         <div class="tarjeta">
-          <p class="num">✕</p>
+          <div class="marca-x"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></div>
           <p>Se pierde en la cartera, se queda en otro pantalón, se moja en
           la lavadora. El sello o el descuento se pierde con ella.</p>
         </div>
         <div class="tarjeta">
-          <p class="num">✕</p>
+          <div class="marca-x"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></div>
           <p>El dueño no tiene ningún dato: no sabe cuántos clientes
           regresan, ni con qué frecuencia, ni cuánto gastan.</p>
         </div>
         <div class="tarjeta">
-          <p class="num">✕</p>
+          <div class="marca-x"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></div>
           <p>Imprimir tarjetas nuevas, sellarlas a mano, revisar que nadie se
-          las acredite de más: tiempo del negocio que se va en administrar
-          papel.</p>
+          las acredite de más: tiempo del negocio que se va en administrar papel.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Cómo funciona -->
+  <!-- ══ Cómo funciona ══ -->
   <section class="raya" id="como-funciona">
     <div class="wrap">
       <div class="centro">
@@ -264,7 +439,53 @@ footer .copy{margin-top:2rem;font-size:.82rem}
     </div>
   </section>
 
-  <!-- Para qué negocios -->
+  <!-- ══ Qué incluye ══ -->
+  <section class="raya">
+    <div class="wrap">
+      <div class="centro">
+        <span class="etiqueta">Qué incluye</span>
+        <h2>Todo lo que necesitas para arrancar</h2>
+        <p>No hay que comprar equipo nuevo ni instalar programas. Lo montamos
+        contigo y queda listo.</p>
+      </div>
+      <div class="incluye">
+        <div>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12 5.5 5.5L20 7"/></svg>
+          <p>La tarjeta de tu negocio en Apple Wallet y Google Wallet</p>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12 5.5 5.5L20 7"/></svg>
+          <p>Panel para tu personal, con clave por turno</p>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12 5.5 5.5L20 7"/></svg>
+          <p>Letrero con código QR listo para imprimir</p>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12 5.5 5.5L20 7"/></svg>
+          <p>Puntos por consumo o sellos por visita, tú eliges</p>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12 5.5 5.5L20 7"/></svg>
+          <p>Todas tus sucursales en una sola cuenta</p>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12 5.5 5.5L20 7"/></svg>
+          <p>Historial de cada punto acreditado y canjeado</p>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12 5.5 5.5L20 7"/></svg>
+          <p>Aviso de privacidad y consentimiento del cliente</p>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12 5.5 5.5L20 7"/></svg>
+          <p>Configuración y acompañamiento de nuestra parte</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ Para tu negocio ══ -->
   <section class="raya" id="tu-negocio">
     <div class="wrap">
       <div class="centro">
@@ -274,23 +495,146 @@ footer .copy{margin-top:2rem;font-size:.82rem}
         le da una razón más para hacerlo.</p>
       </div>
       <div class="giros">
-        <span>Restaurantes</span>
-        <span>Cafeterías</span>
-        <span>Barberías</span>
-        <span>Salones de belleza</span>
-        <span>Spas</span>
-        <span>Lavados de autos</span>
-        <span>Panaderías</span>
-        <span>Gimnasios</span>
-        <span>Tiendas de ropa</span>
-        <span>Heladerías</span>
-        <span>Farmacias</span>
-        <span>Y más</span>
+        <span>Restaurantes</span><span>Cafeterías</span><span>Barberías</span>
+        <span>Salones de belleza</span><span>Spas</span><span>Lavados de autos</span>
+        <span>Panaderías</span><span>Gimnasios</span><span>Tiendas de ropa</span>
+        <span>Heladerías</span><span>Farmacias</span><span>Y más</span>
       </div>
     </div>
   </section>
 
-  <!-- Por qué Retor -->
+  <!-- ══ Tarjetas de ejemplo ══ -->
+  <section class="raya" id="ejemplos">
+    <div class="wrap">
+      <div class="centro">
+        <span class="etiqueta">Sin diseño a la medida</span>
+        <h2>Tarjetas listas para usar, según tu giro</h2>
+        <p>Si no quieres mandar a hacer un diseño propio, tu negocio arranca
+        directo con una de estas plantillas. Si prefieres la tuya con tu
+        color y tu logo, también se puede.</p>
+      </div>
+      <div class="pases">
+
+        <article class="pase" style="--acento:#1B62A8">
+          <div class="pase-top">
+            <span class="pase-logo">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 3v6M10 3v6M13 3v6M7 9h6M10 9v12"/>
+                <path d="M18 3c-1.3 1.8-1.9 3.7-1.9 5.5 0 1.4.8 2.1 1.9 2.1s1.9-.7 1.9-2.1C19.9 6.7 19.3 4.8 18 3z"/>
+                <path d="M18 10.6V21"/>
+              </svg>
+            </span>
+            <div><p class="pase-neg">Tu negocio</p><p class="pase-giro">Restaurante</p></div>
+          </div>
+          <div class="pase-cuerpo">
+            <p class="pase-rot">Puntos acumulados</p>
+            <div class="pase-saldo"><span class="pase-num">340</span><span class="pase-uni">de 500</span></div>
+            <div class="pase-barra"><i style="width:68%"></i></div>
+            <p class="pase-prog">1 punto por cada $1 · 500 puntos = $15 de descuento</p>
+          </div>
+          <div class="pase-codigo"><div class="barras"></div><span class="serie">M97WP67VB4DD</span></div>
+        </article>
+
+        <article class="pase" style="--acento:#16324F">
+          <div class="pase-top">
+            <span class="pase-logo">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 8h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8z"/>
+                <path d="M17 9.5h1.5a3 3 0 0 1 0 6H17"/>
+                <path d="M8 2.5V5M12 2.5V5"/>
+              </svg>
+            </span>
+            <div><p class="pase-neg">Tu negocio</p><p class="pase-giro">Cafetería</p></div>
+          </div>
+          <div class="pase-cuerpo">
+            <p class="pase-rot">Sellos de visita</p>
+            <div class="pase-saldo"><span class="pase-num">6</span><span class="pase-uni">de 8</span></div>
+            <div class="pase-barra"><i style="width:75%"></i></div>
+            <p class="pase-prog">Un sello por visita · 8 sellos = café gratis</p>
+          </div>
+          <div class="pase-codigo"><div class="barras"></div><span class="serie">K3QX91LR7T2H</span></div>
+        </article>
+
+        <article class="pase" style="--acento:#0B2A45">
+          <div class="pase-top">
+            <span class="pase-logo">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="6" cy="19" r="2.5"/><circle cx="18" cy="19" r="2.5"/>
+                <path d="M7.7 17.1 18 3.5M16.3 17.1 6 3.5"/>
+              </svg>
+            </span>
+            <div><p class="pase-neg">Tu negocio</p><p class="pase-giro">Barbería</p></div>
+          </div>
+          <div class="pase-cuerpo">
+            <p class="pase-rot">Sellos de corte</p>
+            <div class="pase-saldo"><span class="pase-num">4</span><span class="pase-uni">de 6</span></div>
+            <div class="pase-barra"><i style="width:67%"></i></div>
+            <p class="pase-prog">Un sello por corte · 6 cortes = 1 gratis</p>
+          </div>
+          <div class="pase-codigo"><div class="barras"></div><span class="serie">B8VN45WZ0Q1J</span></div>
+        </article>
+
+        <article class="pase" style="--acento:#2E7CA8">
+          <div class="pase-top">
+            <span class="pase-logo">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20 4C20 13.9 13.9 20 4 20 4 10.1 10.1 4 20 4z"/>
+                <path d="M4 20 20 4"/>
+              </svg>
+            </span>
+            <div><p class="pase-neg">Tu negocio</p><p class="pase-giro">Spa</p></div>
+          </div>
+          <div class="pase-cuerpo">
+            <p class="pase-rot">Puntos acumulados</p>
+            <div class="pase-saldo"><span class="pase-num">620</span><span class="pase-uni">de 1,000</span></div>
+            <div class="pase-barra"><i style="width:62%"></i></div>
+            <p class="pase-prog">1 punto por cada $1 · 1,000 puntos = masaje gratis</p>
+          </div>
+          <div class="pase-codigo"><div class="barras"></div><span class="serie">P6DF23YU8M4K</span></div>
+        </article>
+
+        <article class="pase" style="--acento:#3D6FA5">
+          <div class="pase-top">
+            <span class="pase-logo">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 9v6M7.5 6.5v11M16.5 6.5v11M20 9v6M7.5 12h9"/>
+              </svg>
+            </span>
+            <div><p class="pase-neg">Tu negocio</p><p class="pase-giro">Gimnasio</p></div>
+          </div>
+          <div class="pase-cuerpo">
+            <p class="pase-rot">Sellos de visita</p>
+            <div class="pase-saldo"><span class="pase-num">9</span><span class="pase-uni">de 12</span></div>
+            <div class="pase-barra"><i style="width:75%"></i></div>
+            <p class="pase-prog">Un sello por visita · 12 visitas = 1 mes gratis</p>
+          </div>
+          <div class="pase-codigo"><div class="barras"></div><span class="serie">H1TC76XE39NV</span></div>
+        </article>
+
+        <article class="pase" style="--acento:#1D5C8A">
+          <div class="pase-top">
+            <span class="pase-logo">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 8V6.9A2.2 2.2 0 1 1 14.2 4.7"/>
+                <path d="M12 8 3.6 14.6a1 1 0 0 0 .6 1.8h15.6a1 1 0 0 0 .6-1.8L12 8z"/>
+              </svg>
+            </span>
+            <div><p class="pase-neg">Tu negocio</p><p class="pase-giro">Tienda de ropa</p></div>
+          </div>
+          <div class="pase-cuerpo">
+            <p class="pase-rot">Puntos acumulados</p>
+            <div class="pase-saldo"><span class="pase-num">180</span><span class="pase-uni">de 300</span></div>
+            <div class="pase-barra"><i style="width:60%"></i></div>
+            <p class="pase-prog">1 punto por cada $1 · 300 puntos = $10 de descuento</p>
+          </div>
+          <div class="pase-codigo"><div class="barras"></div><span class="serie">R5GJ82AS64PW</span></div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ Por qué Retor ══ -->
   <section class="raya">
     <div class="wrap">
       <div class="centro">
@@ -322,7 +666,7 @@ footer .copy{margin-top:2rem;font-size:.82rem}
     </div>
   </section>
 
-  <!-- Preguntas frecuentes -->
+  <!-- ══ Preguntas ══ -->
   <section class="raya" id="preguntas">
     <div class="wrap">
       <div class="centro">
@@ -351,6 +695,12 @@ footer .copy{margin-top:2rem;font-size:.82rem}
           no dentro del aparato. Se recupera buscándolo por teléfono.</p>
         </details>
         <details>
+          <summary>¿Cuánto tarda en quedar listo?</summary>
+          <p>La configuración de tu programa se hace en una sesión contigo.
+          Después hay que esperar la aprobación de Apple y de Google para tu
+          tarjeta, que es el paso que no depende de nosotros.</p>
+        </details>
+        <details>
           <summary>¿Qué datos de mis clientes se guardan?</summary>
           <p>Nombre, teléfono y, si quieren darlo, su cumpleaños. Nada de
           datos financieros ni sensibles. Más detalle en el
@@ -360,13 +710,58 @@ footer .copy{margin-top:2rem;font-size:.82rem}
     </div>
   </section>
 
-  <!-- CTA final -->
+  <!-- ══ Contacto ══ -->
+  <section class="raya" id="contacto">
+    <div class="wrap">
+      <div class="centro">
+        <span class="etiqueta">Contacto</span>
+        <h2>Hablemos de tu negocio</h2>
+        <p>Contestamos el mismo día hábil. Cuéntanos qué vendes y cuántas
+        sucursales tienes, y te decimos si Retor te sirve.</p>
+      </div>
+      <div class="contacto">
+        <div class="via">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>
+            </svg>
+          </div>
+          <p class="rot">Correo</p>
+          <p class="dato"><a href="mailto:reneesquer8@hotmail.com">reneesquer8@hotmail.com</a></p>
+          <p class="nota">La vía más rápida. Escríbenos a cualquier hora.</p>
+        </div>
+        <div class="via">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a1.5 1.5 0 0 1-1.7 1.5A16.5 16.5 0 0 1 3.5 5.7 1.5 1.5 0 0 1 5 4Z"/>
+            </svg>
+          </div>
+          <p class="rot">Teléfono y WhatsApp</p>
+          <p class="dato"><a href="tel:+526441004370">644 100 4370</a></p>
+          <p class="nota">Llámanos o mándanos mensaje.</p>
+        </div>
+        <div class="via">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/>
+            </svg>
+          </div>
+          <p class="rot">Horario de atención</p>
+          <p class="dato">Lunes a viernes, 9:00 a 18:00</p>
+          <p class="nota">Hora del Pacífico · Ciudad Obregón, Sonora.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ Cierre ══ -->
   <section class="raya">
     <div class="wrap">
       <div class="cta-final">
+        <span class="etiqueta">Empieza hoy</span>
         <h2>¿Tienes un negocio y quieres probarlo?</h2>
         <p>Cuéntanos de tu negocio y te decimos si Retor te sirve y qué
-        necesitas para arrancar.</p>
+        necesitas para arrancar. Sin compromiso.</p>
         <a class="btn btn-primario btn-grande" href="mailto:reneesquer8@hotmail.com">Escríbenos</a>
       </div>
     </div>
@@ -375,23 +770,51 @@ footer .copy{margin-top:2rem;font-size:.82rem}
 </main>
 
 <footer>
-  <div class="wrap fila">
-    <div>
-      <a class="marca" href="index.html" style="display:flex;align-items:center;gap:.5rem;text-decoration:none;color:inherit;font-weight:700">
-        <span class="glifo" style="width:1.6rem;height:1.6rem;border-radius:.4rem;background:var(--rojo);color:#fff;display:grid;place-items:center;font-family:Georgia,serif;font-size:.95rem">R</span>
-        Retor
-      </a>
-      <p style="max-width:16rem;margin:.75rem 0 0">Programas de lealtad digitales
-      para negocios pequeños, en Sonora, México.</p>
+  <div class="wrap">
+    <div class="fila">
+      <div>
+        <a class="marca" href="index.html">
+          <svg class="glifo" style="width:1.7rem;height:1.7rem" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="100" height="100" rx="26" fill="#1B62A8"/>
+            <g fill="#fff" fill-rule="evenodd">
+              <path d="M28 22h22a14 14 0 0 1 0 28H41v28H28V22Z"/>
+              <rect x="41" y="32" width="12" height="8" rx="4"/>
+            </g>
+            <path d="M44 50h12l13 28H57L44 50Z" fill="#fff"/>
+            <g fill="none" stroke="#1B62A8" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 44h74"/><path d="M77 37l7 7-7 7"/>
+              <path d="M90 58H16"/><path d="M23 51l-7 7 7 7"/>
+            </g>
+            <g fill="none" stroke="#F2C75B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 44h74"/><path d="M77 37l7 7-7 7"/>
+              <path d="M90 58H16"/><path d="M23 51l-7 7 7 7"/>
+            </g>
+          </svg>
+          <span class="nom" style="color:var(--tinta)">Retor</span>
+        </a>
+        <p style="max-width:17rem;margin:.75rem 0 0">Programas de lealtad digitales
+        para negocios pequeños, en Sonora, México.</p>
+      </div>
+      <div class="enlaces">
+        <b>El servicio</b>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#ejemplos">Ejemplos de tarjeta</a>
+        <a href="#tu-negocio">Para tu negocio</a>
+        <a href="#preguntas">Preguntas frecuentes</a>
+      </div>
+      <div class="enlaces">
+        <b>Contacto</b>
+        <a href="mailto:reneesquer8@hotmail.com">reneesquer8@hotmail.com</a>
+        <a href="tel:+526441004370">644 100 4370</a>
+        <a href="soporte.html">Atención a clientes</a>
+        <a href="privacidad.html">Aviso de privacidad</a>
+      </div>
     </div>
-    <div class="enlaces">
-      <a href="#como-funciona">Cómo funciona</a>
-      <a href="#tu-negocio">Para tu negocio</a>
-      <a href="soporte.html">Atención a clientes</a>
-      <a href="privacidad.html">Aviso de privacidad</a>
+    <div class="copy">
+      <span>Retor, 2026 · Ciudad Obregón, Sonora, México</span>
+      <span>Apple Wallet y Google Wallet son marcas de sus respectivos dueños.</span>
     </div>
   </div>
-  <div class="copy">Retor, 2026 · Ciudad Obregón, Sonora, México</div>
 </footer>
 
 </body>
