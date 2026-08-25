@@ -18,8 +18,7 @@
  * al archivo. Es una fuente variable: un solo archivo cubre de la 400 a la 800.
  *
  * font-display:swap significa que mientras carga se ve el tipo del sistema.
- * Nunca texto invisible, que fue el reclamo por el que Google rechazo este
- * sitio la primera vez. */
+ * Nunca texto invisible. */
 @font-face{
   font-family:"Inter";
   font-style:normal;
@@ -48,7 +47,6 @@ img,svg{max-width:100%}
 :focus-visible{outline:3px solid var(--dorado);outline-offset:3px;border-radius:.4rem}
 
 .wrap{width:100%;max-width:68rem;margin:0 auto;padding:0 1.5rem}
-.wrap-angosto{max-width:44rem}
 
 /* ── Tipografía ─────────────────────────────────────────────────── */
 h1,h2,h3{letter-spacing:-.028em;text-wrap:balance;margin:0}
@@ -80,8 +78,6 @@ h3{font-size:1.06rem;line-height:1.35;font-weight:700}
 .btn-azul:hover{background:var(--azul-texto);transform:translateY(-2px)}
 .btn-claro{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.38)}
 .btn-claro:hover{border-color:#fff;background:rgba(255,255,255,.09)}
-.btn-linea{background:transparent;color:var(--tinta);border:1.5px solid var(--linea)}
-.btn-linea:hover{border-color:var(--azul);color:var(--azul)}
 .btn-g{padding:.95rem 1.7rem;font-size:1rem}
 
 /* ── Encabezado ─────────────────────────────────────────────────── */
@@ -298,12 +294,11 @@ footer .marca{margin-bottom:.85rem}
 footer .copy{margin-top:2.5rem;padding-top:1.4rem;border-top:1px solid var(--linea);
   font-size:.8rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.75rem}
 
-/* A propósito NO hay animaciones de aparición sobre el texto.
-   Cualquier efecto que arranque en opacidad cero corre el riesgo de dejar
-   contenido invisible si el navegador congela el reloj de animaciones, que es
-   exactamente el reclamo por el que Google rechazó este sitio la primera vez.
-   El movimiento vive solo en la tarjeta de la portada y en los estados al
-   pasar el ratón, que nunca esconden nada. Tampoco hay JavaScript. */
+/* A propósito NO hay animaciones de aparición sobre el texto: cualquier
+   efecto que arranque en opacidad cero puede dejar contenido invisible si el
+   navegador congela el reloj de animaciones. El movimiento vive solo en la
+   tarjeta de la portada y en los estados al pasar el ratón, que nunca
+   esconden nada. Tampoco hay JavaScript. */
 
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
