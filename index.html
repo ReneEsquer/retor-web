@@ -201,6 +201,122 @@ nav a.enlace:hover{color:var(--azul)}
 @media (max-width:64rem){.funciones{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:34rem){.funciones{grid-template-columns:1fr}}
 
+
+/* ── Plantillas de tarjeta ──────────────────────────────────────── */
+.plantillas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(1rem,2vw,1.6rem)}
+.plt{background:var(--fondo);border-radius:var(--radio-g);overflow:hidden;
+  view-timeline-name:--plt;view-timeline-axis:block;
+  box-shadow:var(--sombra-m);display:flex;flex-direction:column;
+  transition:transform .2s,box-shadow .2s}
+.plt:hover{transform:translateY(-5px);box-shadow:0 30px 55px -24px rgba(10,30,58,.55)}
+
+.plt-cab{display:flex;align-items:center;gap:.7rem;padding:1rem 1.05rem .8rem}
+.plt-logo{width:2.15rem;height:2.15rem;flex:none;border-radius:50%;
+  background:var(--marca);display:grid;place-items:center;
+  font-size:.72rem;font-weight:800;color:var(--fondo);letter-spacing:.01em}
+.plt-id{display:flex;flex-direction:column;min-width:0;line-height:1.25}
+.plt-id b{font-size:.92rem;font-weight:700;color:var(--sobre);letter-spacing:-.015em}
+.plt-id small{font-size:.66rem;color:var(--sobre-tenue);line-height:1.35}
+
+.plt-saldo{padding:0 1.05rem .85rem;display:flex;flex-direction:column;gap:.05rem}
+.plt-saldo .e{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--sobre-tenue)}
+.plt-saldo .n{font-size:1.85rem;font-weight:800;line-height:1;letter-spacing:-.035em;
+  color:var(--sobre)}
+.plt-saldo .n i{font-size:.8rem;font-style:normal;font-weight:600;
+  color:var(--sobre-tenue);letter-spacing:0;margin-left:.35rem}
+
+/* La banda: esto es la imagen de portada del pase */
+.plt-banda{height:6.6rem;position:relative;overflow:hidden;display:grid;
+  place-items:center;padding:.7rem .9rem}
+.plt-banda .rotulo-b{font-weight:800;letter-spacing:-.02em;line-height:1;
+  position:relative;z-index:2}
+
+/* Cafetería */
+.b-cafe{background:linear-gradient(155deg,#F0E3BE,#DFCB94 45%,#C4A967)}
+.b-cafe .rotulo-b{font-size:1.05rem;letter-spacing:.24em;text-transform:uppercase;
+  color:#2A241C;font-weight:700}
+.b-cafe .sellos-b{display:flex;gap:.32rem;margin-top:.5rem;justify-content:center}
+.b-cafe .sellos-b i{width:.85rem;height:.85rem;border-radius:50%;display:block;
+  background:#2A241C}
+.b-cafe .sellos-b i.vacio{background:transparent;border:1.5px dashed rgba(42,36,28,.5)}
+
+/* Pizzería */
+.b-pizza{background:linear-gradient(158deg,#26543A,#0F2619)}
+.b-pizza .tri{position:absolute;inset:0 0 auto 0;height:.28rem;display:flex}
+.b-pizza .tri i{flex:1}
+.b-pizza .tri i:nth-child(1){background:#7CC078}
+.b-pizza .tri i:nth-child(2){background:#F4E9CE}
+.b-pizza .tri i:nth-child(3){background:#C6382B}
+.b-pizza .rotulo-b{font-size:1.25rem;color:#F4E9CE;letter-spacing:.02em;
+  text-shadow:0 2px 0 rgba(9,32,20,.55)}
+.b-pizza .sub-b{font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;
+  color:rgba(244,233,206,.7);margin-top:.3rem;text-align:center}
+
+/* Barbería */
+.b-barba{background:linear-gradient(162deg,#2A2A2E,#0C0C0E)}
+.b-barba::after{content:"";position:absolute;inset:.5rem;border-radius:.5rem;
+  border:1px solid rgba(198,162,104,.4)}
+.b-barba .rotulo-b{font-size:.95rem;letter-spacing:.34em;text-transform:uppercase;
+  color:#EDE7DD;font-weight:600}
+.b-barba .sub-b{font-size:.5rem;letter-spacing:.3em;text-transform:uppercase;
+  color:#C6A268;margin-top:.35rem;text-align:center;position:relative;z-index:2}
+
+/* Las tres sencillas: color plano y el nombre */
+.b-liso{display:grid;place-items:center}
+.b-liso .rotulo-b{font-size:1.05rem;letter-spacing:.2em;text-transform:uppercase;
+  font-weight:700}
+.b-liso .sub-b{font-size:.55rem;letter-spacing:.24em;text-transform:uppercase;
+  margin-top:.35rem;text-align:center;opacity:.7;position:relative;z-index:2}
+
+.plt-pie{display:flex;align-items:center;justify-content:space-between;gap:.6rem;
+  padding:.75rem 1.05rem .9rem}
+.plt-giro{font-size:.8rem;font-weight:700;color:var(--sobre)}
+.plt-tipo{font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--sobre-tenue);border:1px solid var(--sobre-borde);border-radius:.3rem;
+  padding:.16rem .4rem}
+
+.apila{display:inline-grid}
+.apila > span{grid-area:1/1}
+.apila > .final{opacity:1}
+.apila > .paso{opacity:0}
+
+/* Se llenan al pasar por la pantalla. Donde no se pueda, se ven completas. */
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion: no-preference){
+    @keyframes p-ventana{from{opacity:1}to{opacity:1}}
+    @keyframes p-sello{from{opacity:0;transform:scale(.45)}to{opacity:1;transform:scale(1)}}
+
+    .plt .apila > .final{opacity:0;
+      animation-name:p-ventana;animation-duration:1ms;animation-fill-mode:forwards;
+      animation-timing-function:linear;animation-timeline:--plt;
+      animation-range:cover 62% cover 100%}
+    .plt .apila > .paso{
+      animation-name:p-ventana;animation-duration:1ms;animation-fill-mode:none;
+      animation-timing-function:linear;animation-timeline:--plt}
+    .plt .apila > .paso:nth-of-type(2){animation-range:cover 0% cover 34%}
+    .plt .apila > .paso:nth-of-type(3){animation-range:cover 34% cover 48%}
+    .plt .apila > .paso:nth-of-type(4){animation-range:cover 48% cover 62%}
+
+    .b-cafe .sellos-b i:not(.vacio){
+      animation-name:p-sello;animation-duration:1ms;animation-fill-mode:both;
+      animation-timing-function:linear;animation-timeline:--plt}
+    .b-cafe .sellos-b i:nth-child(1){animation-range:cover 8% cover 29%}
+    .b-cafe .sellos-b i:nth-child(2){animation-range:cover 29% cover 36%}
+    .b-cafe .sellos-b i:nth-child(3){animation-range:cover 36% cover 43%}
+    .b-cafe .sellos-b i:nth-child(4){animation-range:cover 43% cover 50%}
+    .b-cafe .sellos-b i:nth-child(5){animation-range:cover 50% cover 57%}
+    .b-cafe .sellos-b i:nth-child(6){animation-range:cover 57% cover 64%}
+  }
+}
+
+.nota-plantillas{margin:2.2rem auto 0;max-width:40rem;text-align:center;
+  font-size:.92rem;color:var(--tinta-suave)}
+
+@media (max-width:64rem){.plantillas{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:40rem){.plantillas{grid-template-columns:1fr;max-width:22rem;margin:0 auto}}
+
 /* ── Bloques de color ───────────────────────────────────────────── */
 .bloque{padding:clamp(3.5rem,7vw,5.5rem) 0}
 .b-blanco{background:var(--fondo-1)}
@@ -826,108 +942,111 @@ footer .copy{margin-top:2.5rem;padding-top:1.4rem;border-top:1px solid var(--lin
       <div class="cabecera centrada">
         <p class="rotulo">Sin diseño a la medida</p>
         <h2>Tarjetas listas para usar, según tu giro</h2>
-        <p class="entrada">Si no quieres mandar a hacer un diseño propio, tu negocio
-          arranca directo con una de estas plantillas. Si prefieres la tuya con tu
-          color y tu logo, también se puede.</p>
-      </div>
-      <div class="pases">
-        <div class="pase" style="--acento:#1B62A8">
-          <div class="pase-top">
-            <span class="pase-logo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3v8a3 3 0 0 0 6 0V3M9 11v10M18 3c-1.6 1.4-2.4 3.4-2.4 5.6 0 1.5.8 2.4 2.4 2.4v10"/></svg></span>
-            <div><p class="pase-neg">Tu negocio</p><p class="pase-giro">Restaurante</p></div>
-          </div>
-          <div class="pase-cuerpo">
-            <p class="pase-rot">Puntos acumulados</p>
-            <div class="pase-saldo"><span class="pase-num">340</span><span class="pase-uni">de 500</span></div>
-            <div class="pase-barra"><i style="width:68%"></i></div>
-            <p class="pase-prog">1 punto por cada $1 · 500 puntos = $15 de descuento</p>
-          </div>
-          <div class="pase-codigo"><div class="barras" aria-hidden="true"></div><span class="serie">M97WP67VB4DD</span></div>
-        </div>
-
-        <div class="pase" style="--acento:#16324F">
-          <div class="pase-top">
-            <span class="pase-logo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8Z"/><path d="M17 9.5h1.8a2.5 2.5 0 0 1 0 5H17"/><path d="M7.5 3v2M11 3v2"/></svg></span>
-            <div><p class="pase-neg">Tu negocio</p><p class="pase-giro">Cafetería</p></div>
-          </div>
-          <div class="pase-cuerpo">
-            <p class="pase-rot">Sellos de visita</p>
-            <div class="pase-saldo"><span class="pase-num">6</span><span class="pase-uni">de 8</span></div>
-            <div class="pase-barra"><i style="width:75%"></i></div>
-            <p class="pase-prog">Un sello por visita · 8 sellos = café gratis</p>
-          </div>
-          <div class="pase-codigo"><div class="barras" aria-hidden="true"></div><span class="serie">K3QX91LR7T2H</span></div>
-        </div>
-
-        <div class="pase" style="--acento:#0B2A45">
-          <div class="pase-top">
-            <span class="pase-logo"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6.5" r="2.5"/><circle cx="6" cy="17.5" r="2.5"/><path d="M8 8l12 9M8 16L20 7"/></svg></span>
-            <div><p class="pase-neg">Tu negocio</p><p class="pase-giro">Barbería</p></div>
-          </div>
-          <div class="pase-cuerpo">
-            <p class="pase-rot">Sellos de corte</p>
-            <div class="pase-saldo"><span class="pase-num">4</span><span class="pase-uni">de 6</span></div>
-            <div class="pase-barra"><i style="width:66%"></i></div>
-            <p class="pase-prog">Un sello por corte · 6 cortes = 1 gratis</p>
-          </div>
-          <div class="pase-codigo"><div class="barras" aria-hidden="true"></div><span class="serie">B8VN45WZ0Q1J</span></div>
-        </div>
-
-        <div class="pase" style="--acento:#2E7CA8">
-          <div class="pase-top">
-            <span class="pase-logo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4c2.5 2.5 3.5 5 3.5 7a3.5 3.5 0 0 1-7 0c0-2 1-4.5 3.5-7Z"/><path d="M4.5 18.5c2 1.5 4 1.5 6 0s4-1.5 6 0 3 1 3 1"/></svg></span>
-            <div><p class="pase-neg">Tu negocio</p><p class="pase-giro">Spa</p></div>
-          </div>
-          <div class="pase-cuerpo">
-            <p class="pase-rot">Puntos acumulados</p>
-            <div class="pase-saldo"><span class="pase-num">620</span><span class="pase-uni">de 1,000</span></div>
-            <div class="pase-barra"><i style="width:62%"></i></div>
-            <p class="pase-prog">1 punto por cada $1 · 1,000 puntos = masaje gratis</p>
-          </div>
-          <div class="pase-codigo"><div class="barras" aria-hidden="true"></div><span class="serie">P6DF23YU8M4K</span></div>
-        </div>
-
-        <div class="pase" style="--acento:#3D6FA5">
-          <div class="pase-top">
-            <span class="pase-logo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h2M19 12h2M6.5 8.5v7M17.5 8.5v7M9.5 7v10M14.5 7v10"/></svg></span>
-            <div><p class="pase-neg">Tu negocio</p><p class="pase-giro">Gimnasio</p></div>
-          </div>
-          <div class="pase-cuerpo">
-            <p class="pase-rot">Sellos de visita</p>
-            <div class="pase-saldo"><span class="pase-num">9</span><span class="pase-uni">de 12</span></div>
-            <div class="pase-barra"><i style="width:75%"></i></div>
-            <p class="pase-prog">Un sello por visita · 12 visitas = 1 mes gratis</p>
-          </div>
-          <div class="pase-codigo"><div class="barras" aria-hidden="true"></div><span class="serie">H1TC76XE39NV</span></div>
-        </div>
-
-        <div class="pase" style="--acento:#1D5C8A">
-          <div class="pase-top">
-            <span class="pase-logo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4l-4 2.5 2 3 2-1v11h8V8.5l2 1 2-3L16 4l-4 2.5L8 4Z"/></svg></span>
-            <div><p class="pase-neg">Tu negocio</p><p class="pase-giro">Tienda de ropa</p></div>
-          </div>
-          <div class="pase-cuerpo">
-            <p class="pase-rot">Puntos acumulados</p>
-            <div class="pase-saldo"><span class="pase-num">180</span><span class="pase-uni">de 300</span></div>
-            <div class="pase-barra"><i style="width:60%"></i></div>
-            <p class="pase-prog">1 punto por cada $1 · 300 puntos = $10 de descuento</p>
-          </div>
-          <div class="pase-codigo"><div class="barras" aria-hidden="true"></div><span class="serie">R5GJ82AS64PW</span></div>
-        </div>
+        <p class="entrada">Arranca con una plantilla y cámbiale el color y el logo.
+          Las tres de arriba llevan una portada trabajada. Las tres de abajo son
+          un color y tu nombre, y se ven igual de bien.</p>
       </div>
 
-      <div style="max-width:38rem;margin:3.25rem auto 1.4rem;text-align:center">
-        <h3 style="font-size:1.15rem">Funciona para cualquier negocio con clientes que vuelven</h3>
-        <p class="entrada" style="font-size:.98rem;margin-top:.6rem">Si tu cliente
-          ideal es alguien que regresa una y otra vez, Retor le da una razón más
-          para hacerlo.</p>
+      <div class="plantillas">
+        <article class="plt" style="--fondo:#3B2C22;--marca:#F0E3BE;--sobre:#F6EFE2;--sobre-tenue:rgba(246,239,226,.62);--sobre-borde:rgba(246,239,226,.28)">
+          <div class="plt-cab">
+            <span class="plt-logo">TN</span>
+            <span class="plt-id"><b>Tu negocio</b><small>Programa de lealtad · 8 sellos = café gratis</small></span>
+          </div>
+          <div class="plt-saldo">
+            <span class="e">Sellos</span>
+            <span class="n"><span class="apila"><span class="final">6</span><span class="paso">0</span><span class="paso">2</span><span class="paso">4</span></span><i>de 8</i></span>
+          </div>
+          <div class="plt-banda b-cafe"><span style="display:grid;place-items:center"><span class="rotulo-b">Cafetería</span><span class="sellos-b"><i></i><i></i><i></i><i></i><i></i><i></i><i class="vacio"></i><i class="vacio"></i></span></span></div>
+          <div class="plt-pie">
+            <span class="plt-giro">Cafetería</span>
+            <span class="plt-tipo">Sellos</span>
+          </div>
+        </article>
+
+        <article class="plt" style="--fondo:#153A27;--marca:#F4E9CE;--sobre:#F4E9CE;--sobre-tenue:rgba(244,233,206,.62);--sobre-borde:rgba(244,233,206,.28)">
+          <div class="plt-cab">
+            <span class="plt-logo">TN</span>
+            <span class="plt-id"><b>Tu negocio</b><small>Programa de lealtad · 2,000 puntos = una pizza</small></span>
+          </div>
+          <div class="plt-saldo">
+            <span class="e">Puntos</span>
+            <span class="n"><span class="apila"><span class="final">1,240</span><span class="paso">0</span><span class="paso">400</span><span class="paso">800</span></span><i>de 2,000</i></span>
+          </div>
+          <div class="plt-banda b-pizza"><span class="tri"><i></i><i></i><i></i></span><span style="display:grid;place-items:center"><span class="rotulo-b">Pizzería</span><span class="sub-b">Horno de leña</span></span></div>
+          <div class="plt-pie">
+            <span class="plt-giro">Pizzería</span>
+            <span class="plt-tipo">Puntos</span>
+          </div>
+        </article>
+
+        <article class="plt" style="--fondo:#1A1A1D;--marca:#C6A268;--sobre:#EDE7DD;--sobre-tenue:rgba(237,231,221,.58);--sobre-borde:rgba(198,162,104,.4)">
+          <div class="plt-cab">
+            <span class="plt-logo">TN</span>
+            <span class="plt-id"><b>Tu negocio</b><small>Programa de lealtad · 6 cortes = 1 gratis</small></span>
+          </div>
+          <div class="plt-saldo">
+            <span class="e">Cortes</span>
+            <span class="n"><span class="apila"><span class="final">4</span><span class="paso">0</span><span class="paso">2</span><span class="paso">3</span></span><i>de 6</i></span>
+          </div>
+          <div class="plt-banda b-barba"><span style="display:grid;place-items:center;position:relative;z-index:2"><span class="rotulo-b">Barbería</span><span class="sub-b">Corte y afeitado</span></span></div>
+          <div class="plt-pie">
+            <span class="plt-giro">Barbería</span>
+            <span class="plt-tipo">Sellos</span>
+          </div>
+        </article>
+
+        <article class="plt" style="--fondo:#8E1F17;--marca:#FBE9E7;--sobre:#FFF3F1;--sobre-tenue:rgba(255,243,241,.62);--sobre-borde:rgba(255,243,241,.28)">
+          <div class="plt-cab">
+            <span class="plt-logo">TN</span>
+            <span class="plt-id"><b>Tu negocio</b><small>Programa de lealtad · 500 puntos = $15</small></span>
+          </div>
+          <div class="plt-saldo">
+            <span class="e">Puntos</span>
+            <span class="n"><span class="apila"><span class="final">340</span><span class="paso">0</span><span class="paso">120</span><span class="paso">240</span></span><i>de 500</i></span>
+          </div>
+          <div class="plt-banda b-liso"><span style="background:#B0231A;position:absolute;inset:0"></span><span style="display:grid;place-items:center;position:relative;z-index:2;color:#FFF3F1"><span class="rotulo-b">Tu negocio</span><span class="sub-b">Restaurante</span></span></div>
+          <div class="plt-pie">
+            <span class="plt-giro">Restaurante</span>
+            <span class="plt-tipo">Puntos</span>
+          </div>
+        </article>
+
+        <article class="plt" style="--fondo:#2F5A4C;--marca:#DCEDE6;--sobre:#EEF7F3;--sobre-tenue:rgba(238,247,243,.62);--sobre-borde:rgba(238,247,243,.28)">
+          <div class="plt-cab">
+            <span class="plt-logo">TN</span>
+            <span class="plt-id"><b>Tu negocio</b><small>Programa de lealtad · 1,000 puntos = un masaje</small></span>
+          </div>
+          <div class="plt-saldo">
+            <span class="e">Puntos</span>
+            <span class="n"><span class="apila"><span class="final">620</span><span class="paso">0</span><span class="paso">200</span><span class="paso">420</span></span><i>de 1,000</i></span>
+          </div>
+          <div class="plt-banda b-liso"><span style="background:#3F7A66;position:absolute;inset:0"></span><span style="display:grid;place-items:center;position:relative;z-index:2;color:#EEF7F3"><span class="rotulo-b">Tu negocio</span><span class="sub-b">Spa</span></span></div>
+          <div class="plt-pie">
+            <span class="plt-giro">Spa</span>
+            <span class="plt-tipo">Puntos</span>
+          </div>
+        </article>
+
+        <article class="plt" style="--fondo:#243B63;--marca:#DCE7F8;--sobre:#EEF3FC;--sobre-tenue:rgba(238,243,252,.62);--sobre-borde:rgba(238,243,252,.28)">
+          <div class="plt-cab">
+            <span class="plt-logo">TN</span>
+            <span class="plt-id"><b>Tu negocio</b><small>Programa de lealtad · 10 lavadas = 1 gratis</small></span>
+          </div>
+          <div class="plt-saldo">
+            <span class="e">Sellos</span>
+            <span class="n"><span class="apila"><span class="final">7</span><span class="paso">0</span><span class="paso">3</span><span class="paso">5</span></span><i>de 10</i></span>
+          </div>
+          <div class="plt-banda b-liso"><span style="background:#31538C;position:absolute;inset:0"></span><span style="display:grid;place-items:center;position:relative;z-index:2;color:#EEF3FC"><span class="rotulo-b">Tu negocio</span><span class="sub-b">Lavado de autos</span></span></div>
+          <div class="plt-pie">
+            <span class="plt-giro">Lavado de autos</span>
+            <span class="plt-tipo">Sellos</span>
+          </div>
+        </article>
       </div>
-      <ul class="giros">
-        <li>Restaurantes</li><li>Cafeterías</li><li>Barberías</li>
-        <li>Salones de belleza</li><li>Spas</li><li>Lavados de autos</li>
-        <li>Panaderías</li><li>Gimnasios</li><li>Tiendas de ropa</li>
-        <li>Heladerías</li><li>Farmacias</li><li>Y más</li>
-      </ul>
+
+      <p class="nota-plantillas">No hace falta que seas diseñador. La más sencilla
+        de estas se arma en dos minutos: eliges color, subes tu logo y listo.</p>
     </div>
   </section>
 
