@@ -170,6 +170,37 @@ nav a.enlace:hover{color:var(--azul)}
   .cf-lienzo{height:13.5rem}
 }
 
+
+/* ── Funciones ──────────────────────────────────────────────────── */
+.grupo-titulo{display:flex;align-items:center;gap:.85rem;margin:0 0 1.4rem}
+.grupo-titulo h3{margin:0;font-size:1.05rem;font-weight:700;letter-spacing:.02em;
+  text-transform:uppercase;color:#fff}
+.grupo-titulo .raya{flex:1;height:1px;background:rgba(255,255,255,.18)}
+.grupo-titulo.oro h3{color:var(--dorado)}
+.grupo-titulo.oro .raya{background:rgba(242,199,91,.35)}
+
+.funciones{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:.9rem;margin:0 0 2.9rem;padding:0;list-style:none}
+.funciones li{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.14);
+  border-radius:var(--radio);padding:1.15rem 1.1rem;display:grid;gap:.5rem;
+  align-content:start;transition:border-color .18s,background .18s}
+.funciones li:hover{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.09)}
+.funciones .ico{width:1.75rem;height:1.75rem}
+.funciones .ico svg{width:100%;height:100%;fill:none;stroke:var(--dorado);
+  stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.funciones b{font-size:.97rem;font-weight:700;color:#fff;letter-spacing:-.015em;
+  line-height:1.3}
+.funciones span{font-size:.86rem;line-height:1.45;color:rgba(255,255,255,.7)}
+
+.funciones.antifraude{margin-bottom:0}
+.funciones.antifraude li{background:rgba(242,199,91,.08);
+  border-color:rgba(242,199,91,.28)}
+.funciones.antifraude li:hover{border-color:rgba(242,199,91,.5);
+  background:rgba(242,199,91,.13)}
+
+@media (max-width:64rem){.funciones{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:34rem){.funciones{grid-template-columns:1fr}}
+
 /* ── Bloques de color ───────────────────────────────────────────── */
 .bloque{padding:clamp(3.5rem,7vw,5.5rem) 0}
 .b-blanco{background:var(--fondo-1)}
@@ -557,6 +588,7 @@ footer .copy{margin-top:2.5rem;padding-top:1.4rem;border-top:1px solid var(--lin
     </a>
     <nav>
       <a class="enlace" href="#como-funciona">Cómo funciona</a>
+      <a class="enlace" href="#funciones">Funciones</a>
       <a class="enlace" href="#ejemplos">Ejemplos</a>
       <a class="enlace" href="#preguntas">Preguntas</a>
       <a class="enlace" href="soporte.html">Atención a clientes</a>
@@ -708,37 +740,9 @@ footer .copy{margin-top:2.5rem;padding-top:1.4rem;border-top:1px solid var(--lin
     </div>
   </section>
 
-  <!-- ══════════ 3. El problema ══════════ -->
-  <section class="bloque b-hueso">
-    <div class="wrap">
-      <div class="cabecera">
-        <p class="rotulo">El problema</p>
-        <h2>La tarjeta de papel no le sirve a nadie.</h2>
-        <p class="entrada">Al cliente se le pierde, se le olvida o se le moja. Al
-          dueño no le deja ver nada: no sabe quién regresa, ni cuánto, ni cuándo.</p>
-      </div>
-      <div class="problema">
-        <div class="tarjeta">
-          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg></span>
-          <p>Se pierde en la cartera, se queda en otro pantalón, se moja en la
-            lavadora. El sello o el descuento se pierde con ella.</p>
-        </div>
-        <div class="tarjeta">
-          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9M10 19V5M16 19v-6M22 19H2"/></svg></span>
-          <p>El dueño no tiene ningún dato: no sabe cuántos clientes regresan, ni
-            con qué frecuencia, ni cuánto gastan.</p>
-        </div>
-        <div class="tarjeta">
-          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 7.5V12l3 1.8"/></svg></span>
-          <p>Imprimir tarjetas nuevas, sellarlas a mano, revisar que nadie se las
-            acredite de más: tiempo del negocio que se va en administrar papel.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ══════════ 4. Cómo funciona ══════════ -->
-  <section class="bloque b-blanco" id="como-funciona">
+  <!-- ══════════ 3. Cómo funciona ══════════ -->
+  <section class="bloque b-hueso" id="como-funciona">
     <div class="wrap">
       <div class="cabecera centrada">
         <p class="rotulo">La solución</p>
@@ -816,8 +820,8 @@ footer .copy{margin-top:2.5rem;padding-top:1.4rem;border-top:1px solid var(--lin
     </div>
   </section>
 
-  <!-- ══════════ 5. Ejemplos y giros ══════════ -->
-  <section class="bloque b-hueso" id="ejemplos">
+  <!-- ══════════ 4. Ejemplos y giros ══════════ -->
+  <section class="bloque b-blanco" id="ejemplos">
     <div class="wrap">
       <div class="cabecera centrada">
         <p class="rotulo">Sin diseño a la medida</p>
@@ -927,69 +931,86 @@ footer .copy{margin-top:2.5rem;padding-top:1.4rem;border-top:1px solid var(--lin
     </div>
   </section>
 
-  <!-- ══════════ 6. Por qué Retor + qué incluye ══════════ -->
-  <section class="bloque b-azul">
+  <!-- ══════════ 5. Funciones ══════════ -->
+  <section class="bloque b-azul" id="funciones">
     <div class="wrap">
-      <div class="cabecera" style="max-width:42rem">
-        <p class="rotulo">Por qué Retor</p>
-        <h2>Construido para negocios de verdad</h2>
-        <p class="entrada">No hay que comprar equipo nuevo ni instalar programas.
-          Se monta contigo y queda listo.</p>
+      <div class="cabecera centrada" style="max-width:44rem">
+        <p class="rotulo">Qué incluye</p>
+        <h2>Todo lo que trae tu programa</h2>
+        <p class="entrada">Un solo plan. Sin funciones apagadas ni cobros por cliente.</p>
       </div>
-      <div class="doble">
-        <ul class="razones">
-          <li>
-            <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16.5l5-5 3.5 3.5L20 7.5"/><path d="M15 7.5h5v5"/></svg></span>
-            <div>
-              <h3>Puntos o sellos, tú eliges</h3>
-              <p>Puntos por lo que el cliente gasta, o un sello por cada visita. El
-                programa se adapta a tu negocio, no al revés.</p>
-            </div>
-          </li>
-          <li>
-            <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20V9.5L9 5l6 4.5V20"/><path d="M15 20V11l5 3v6"/><path d="M2 20h20"/></svg></span>
-            <div>
-              <h3>Una cuenta, todas tus sucursales</h3>
-              <p>El cliente acumula en una sucursal y canjea en otra sin que nadie
-                tenga que hacer nada.</p>
-            </div>
-          </li>
-          <li>
-            <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10.5" width="16" height="10" rx="2.2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg></span>
-            <div>
-              <h3>El cliente nunca se acredita solo</h3>
-              <p>Cada punto lo otorga tu personal desde un panel con clave, y queda
-                registrado quién lo hizo y cuándo.</p>
-            </div>
-          </li>
-          <li>
-            <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg></span>
-            <div>
-              <h3>Sin apps, sin fricción</h3>
-              <p>La tarjeta vive en el Wallet que el celular ya trae de fábrica.
-                Nadie descarga nada para tener la tuya.</p>
-            </div>
-          </li>
-        </ul>
 
-        <div class="panel-incluye">
-          <p class="titulo">Qué incluye</p>
-          <ul>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>La tarjeta de tu negocio en Google Wallet</li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Panel para tu personal, con clave por turno</li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Letrero con código QR listo para imprimir</li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Puntos por consumo o sellos por visita</li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Todas tus sucursales en una sola cuenta</li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Historial de cada punto acreditado y canjeado</li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Aviso de privacidad y consentimiento del cliente</li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Configuración y acompañamiento de nuestra parte</li>
-          </ul>
-        </div>
-      </div>
+      <div class="grupo-titulo"><h3>Tu programa</h3><span class="raya"></span></div>
+      <ul class="funciones">
+        <li>
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8.5h18v10a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 18.5v-10Z"/><path d="M6 8.5V5.8A2.3 2.3 0 0 1 8.3 3.5h9.4A2.3 2.3 0 0 1 20 5.8v2.7"/><path d="M16.5 15h2"/></svg></span>
+          <b>Vive en Google Wallet</b>
+          <span>Tu cliente no instala ninguna aplicación.</span>
+        </li>
+        <li>
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.2 1 5.9-5.2-2.8-5.2 2.8 1-5.9L3.5 9.7l5.9-.8L12 3.5Z"/></svg></span>
+          <b>Tu marca en la tarjeta</b>
+          <span>Tu logo, tus colores y el nombre de tu negocio.</span>
+        </li>
+        <li>
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.5" cy="7.5" r="3.5"/><circle cx="16.5" cy="16.5" r="3.5"/><path d="M14 5h6M14 9h6M4 15h6M4 19h6"/></svg></span>
+          <b>Puntos o sellos</b>
+          <span>Puntos por consumo o un sello por visita, según tu giro.</span>
+        </li>
+        <li>
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M6.5 3.5h11v5a5.5 5.5 0 0 1-11 0v-5Z"/><path d="M6.5 5.5H4v1.5a3 3 0 0 0 3 3M17.5 5.5H20V7a3 3 0 0 1-3 3"/></svg></span>
+          <b>Tú fijas el premio</b>
+          <span>Cuál es y cuántos puntos cuesta alcanzarlo.</span>
+        </li>
+        <li>
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20V9.5L9 5l6 4.5V20"/><path d="M15 20V12l5.5 3.5V20"/><path d="M2 20h20"/></svg></span>
+          <b>Todas tus sucursales</b>
+          <span>Un solo saldo. Acumula en una y canjea en otra.</span>
+        </li>
+        <li>
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3.5" width="16" height="13" rx="2"/><path d="M12 16.5V21M8.5 21h7"/><rect x="8" y="7" width="8" height="6" rx="1"/></svg></span>
+          <b>Letrero para imprimir</b>
+          <span>En PDF, con el código de tu negocio ya puesto.</span>
+        </li>
+        <li>
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.2l3.2 1.9"/></svg></span>
+          <b>Vigencia de puntos</b>
+          <span>Opcional. Tú decides el plazo, o lo dejas apagado.</span>
+        </li>
+        <li>
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 9a3 3 0 1 0 0 6c2.2 0 3.5-3 3.5-3s1.3-3 3.5-3a3 3 0 1 1 0 6c-2.2 0-3.5-3-3.5-3"/></svg></span>
+          <b>Sin cobro por cliente</b>
+          <span>Clientes y movimientos ilimitados.</span>
+        </li>
+      </ul>
+
+      <div class="grupo-titulo oro"><h3>Control y antifraude</h3><span class="raya"></span></div>
+      <ul class="funciones antifraude">
+        <li>
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 4.5h15v15h-15z"/><path d="M8 9h8M8 12.5h8M8 16h4.5"/></svg></span>
+          <b>Cada punto tiene dueño</b>
+          <span>Qué cajero acreditó, cuánto, en qué sucursal y a qué hora.</span>
+        </li>
+        <li>
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2.2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg></span>
+          <b>El historial no se edita</b>
+          <span>Ni se borra. Es lo que hace creíble cualquier aclaración.</span>
+        </li>
+        <li>
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="12" r="3.5"/><path d="M12.5 12H21M17.5 12v3M20 12v2.2"/></svg></span>
+          <b>Clave por turno</b>
+          <span>Cada cajero entra con la suya, y él mismo puede cambiarla.</span>
+        </li>
+        <li>
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 3.5h7v17h-7zM13.5 3.5h7v17h-7z"/><path d="M8 12h.01M16 12h.01"/></svg></span>
+          <b>Dos puertas separadas</b>
+          <span>La oficina y el mostrador no se mezclan nunca.</span>
+        </li>
+      </ul>
     </div>
   </section>
 
-  <!-- ══════════ 7. Preguntas ══════════ -->
+  <!-- ══════════ 6. Preguntas ══════════ -->
   <section class="bloque b-blanco" id="preguntas">
     <div class="wrap">
       <div class="cabecera centrada">
@@ -1033,7 +1054,7 @@ footer .copy{margin-top:2.5rem;padding-top:1.4rem;border-top:1px solid var(--lin
     </div>
   </section>
 
-  <!-- ══════════ 8. Contacto ══════════ -->
+  <!-- ══════════ 7. Contacto ══════════ -->
   <section class="bloque b-hueso" id="contacto">
     <div class="wrap">
       <div class="cabecera centrada">
@@ -1065,7 +1086,7 @@ footer .copy{margin-top:2.5rem;padding-top:1.4rem;border-top:1px solid var(--lin
     </div>
   </section>
 
-  <!-- ══════════ 9. Cierre ══════════ -->
+  <!-- ══════════ 8. Cierre ══════════ -->
   <section class="bloque b-azul" style="padding-top:clamp(3rem,6vw,4.5rem);padding-bottom:clamp(3rem,6vw,4.5rem)">
     <div class="wrap cierre">
       <p class="rotulo" style="margin-left:auto;margin-right:auto">Empieza hoy</p>
