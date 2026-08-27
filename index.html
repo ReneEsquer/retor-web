@@ -96,6 +96,80 @@ nav a.enlace{font-size:.9rem;font-weight:600;text-decoration:none;color:var(--ti
   transition:color .18s}
 nav a.enlace:hover{color:var(--azul)}
 
+
+/* ── Cómo funciona: tres tarjetas con ilustración ───────────────── */
+.comofunciona{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(1rem,2vw,1.5rem)}
+.cf{background:var(--superficie);border:1px solid var(--linea);border-radius:var(--radio-g);
+  overflow:hidden;display:flex;flex-direction:column}
+.cf-cab{display:flex;align-items:center;gap:.65rem;padding:1rem 1.15rem;
+  background:var(--azul-suave);border-bottom:1px solid var(--linea)}
+.cf-num{width:1.6rem;height:1.6rem;flex:none;border-radius:.45rem;background:var(--azul);
+  color:#fff;font-size:.85rem;font-weight:800;display:grid;place-items:center}
+.cf-cab h3{margin:0;font-size:1.08rem;font-weight:700;letter-spacing:-.02em}
+
+.cf-lienzo{height:12.5rem;background:linear-gradient(160deg,#123E68,#0A2E52 70%);
+  display:grid;place-items:center;padding:1.1rem;overflow:hidden;position:relative}
+
+.cf-txt{margin:0;padding:1.05rem 1.15rem .35rem;font-size:.95rem;line-height:1.55}
+.cf-pie{margin:0;padding:0 1.15rem 1.2rem;font-size:.83rem;color:var(--tinta-suave)}
+
+/* 1 · el formulario y la tarjeta */
+.mini{display:flex;align-items:center;gap:.8rem}
+.mini-form{width:7.4rem;background:#F4F8FC;border-radius:.55rem;padding:.5rem;
+  display:grid;gap:.38rem}
+.mini-form i{display:block;height:.32rem;border-radius:.16rem;background:#C6D8EC}
+.mini-form i.corta{width:55%}
+.mini-form i.campo{height:.72rem;background:#fff;box-shadow:0 0 0 1px #DCE7F3 inset}
+.mini-form .colores{display:flex;gap:.24rem;margin-top:.1rem}
+.mini-form .colores b{width:.62rem;height:.62rem;border-radius:50%;display:block}
+.mini-card{width:6.6rem;border-radius:.55rem;padding:.5rem .55rem;
+  background:linear-gradient(158deg,#2A78C4,#0A2E52);
+  box-shadow:0 8px 18px -8px rgba(0,0,0,.7);display:grid;gap:.3rem}
+.mini-card .t{font-size:.62rem;font-weight:800;color:#F4F8FC;letter-spacing:-.02em}
+.mini-card .n{font-size:1.15rem;font-weight:800;color:var(--dorado);line-height:1}
+.mini-card .b{height:.22rem;border-radius:.12rem;background:rgba(6,26,48,.55)}
+.mini-card .b span{display:block;height:100%;width:64%;border-radius:.12rem;
+  background:linear-gradient(90deg,#6FA8DF,var(--dorado))}
+
+/* 2 · el letrero y el celular */
+.mini2{display:flex;align-items:flex-end;gap:.7rem}
+.letrero{width:7.6rem;background:#FBFDFF;border-radius:.5rem;padding:.6rem .5rem .5rem;
+  display:grid;gap:.4rem;justify-items:center;box-shadow:0 10px 22px -10px rgba(0,0,0,.6)}
+.letrero .lt{font-size:.52rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--azul)}
+.letrero .qr{width:3.9rem;height:3.9rem}
+.letrero .qr svg{width:100%;height:100%;display:block}
+.letrero .lp{font-size:.5rem;color:var(--tinta-suave);text-align:center;line-height:1.3}
+.minitel{width:4.2rem;height:7.4rem;border-radius:.75rem;background:#0B0B0D;padding:.2rem;
+  box-shadow:0 10px 22px -10px rgba(0,0,0,.7)}
+.minitel .p{height:100%;border-radius:.6rem;background:#EEF3F9;padding:.32rem;
+  display:flex;align-items:flex-start}
+.minitel .tar{width:100%;border-radius:.34rem;padding:.32rem .3rem;
+  background:linear-gradient(158deg,#2A78C4,#0A2E52);display:grid;gap:.16rem}
+.minitel .tar b{font-size:.42rem;color:#F4F8FC;font-weight:800}
+.minitel .tar span{font-size:.62rem;color:var(--dorado);font-weight:800;line-height:1}
+
+/* 3 · el mostrador */
+.mostrador{width:100%;max-width:15rem;background:#141416;border-radius:.7rem;
+  border:1px solid #2C2C30;padding:.7rem;display:grid;gap:.55rem;
+  box-shadow:0 12px 26px -12px rgba(0,0,0,.8)}
+.mostrador .fila{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+.mostrador .cli{font-size:.62rem;color:#F5F5F7;font-weight:700}
+.mostrador .caja{font-size:.5rem;color:#98989F}
+.mostrador .saldo{background:#1C1C1F;border-radius:.4rem;padding:.4rem .5rem;
+  display:flex;align-items:baseline;justify-content:space-between}
+.mostrador .saldo b{font-size:1.1rem;color:var(--dorado);font-weight:800;line-height:1}
+.mostrador .saldo span{font-size:.5rem;color:#98989F;letter-spacing:.1em;text-transform:uppercase}
+.mostrador .btn2{background:var(--dorado);color:#10233B;border-radius:.4rem;
+  padding:.42rem;text-align:center;font-size:.66rem;font-weight:800}
+.mostrador .nota{font-size:.46rem;color:#98989F;text-align:center}
+
+@media (max-width:60rem){
+  .comofunciona{grid-template-columns:1fr;max-width:26rem;margin:0 auto}
+  .cf-lienzo{height:13.5rem}
+}
+
 /* ── Bloques de color ───────────────────────────────────────────── */
 .bloque{padding:clamp(3.5rem,7vw,5.5rem) 0}
 .b-blanco{background:var(--fondo-1)}
@@ -666,37 +740,79 @@ footer .copy{margin-top:2.5rem;padding-top:1.4rem;border-top:1px solid var(--lin
   <!-- ══════════ 4. Cómo funciona ══════════ -->
   <section class="bloque b-blanco" id="como-funciona">
     <div class="wrap">
-      <div class="cabecera">
+      <div class="cabecera centrada">
         <p class="rotulo">La solución</p>
         <h2>Cómo funciona</h2>
-        <p class="entrada">Cuatro pasos, del lado del cliente y del lado de tu
-          mostrador.</p>
+        <p class="entrada">Tres pasos. Ninguno necesita técnico, equipo nuevo ni
+          esperar aprobaciones.</p>
       </div>
-      <ol class="pasos">
-        <li>
-          <div class="marcador">1</div>
-          <b>Escanea un código</b>
-          <span>Con la cámara de su celular, en tu mostrador. No hay aplicación que
-            instalar.</span>
-        </li>
-        <li>
-          <div class="marcador">2</div>
-          <b>Deja sus datos</b>
-          <span>Nombre y teléfono. Toma quince segundos y acepta el aviso de
-            privacidad.</span>
-        </li>
-        <li>
-          <div class="marcador">3</div>
-          <b>Recibe su tarjeta</b>
-          <span>En su Wallet, con el saldo de bienvenida ya acreditado.</span>
-        </li>
-        <li>
-          <div class="marcador">4</div>
-          <b>Tu equipo la acredita</b>
-          <span>En cada compra, desde una tableta o computadora con clave por turno.
-            El cliente nunca se acredita solo.</span>
-        </li>
-      </ol>
+
+      <div class="comofunciona">
+
+        <article class="cf">
+          <div class="cf-cab"><span class="cf-num">1</span><h3>Creas tu tarjeta</h3></div>
+          <div class="cf-lienzo">
+            <div class="mini">
+              <div class="mini-form">
+                <i class="corta"></i><i class="campo"></i>
+                <i class="corta"></i><i class="campo"></i>
+                <span class="colores">
+                  <b style="background:#D40711"></b><b style="background:#1B62A8"></b>
+                  <b style="background:#1E4430"></b><b style="background:#C6A268"></b>
+                </span>
+              </div>
+              <div class="mini-card">
+                <span class="t">Tu negocio</span>
+                <span class="n">340</span>
+                <span class="b"><span></span></span>
+              </div>
+            </div>
+          </div>
+          <p class="cf-txt">Eliges una plantilla, subes tu logo y defines cuántos
+            puntos vale tu premio.</p>
+          <p class="cf-pie">Sin diseñador y sin programa que instalar.</p>
+        </article>
+
+        <article class="cf">
+          <div class="cf-cab"><span class="cf-num">2</span><h3>La compartes</h3></div>
+          <div class="cf-lienzo">
+            <div class="mini2">
+              <div class="letrero">
+                <span class="lt">Tu negocio</span>
+                <span class="qr"><svg viewBox="0 0 27 27" shape-rendering="crispEdges" role="img" aria-label="Código de la tarjeta"><path fill="#FFFFFF" d="M0 0h27v27H0z"/><path stroke="#101C31" d="M1 1.5h7m1 0h1m1 0h3m1 0h1m1 0h1m1 0h7M1 2.5h1m5 0h1m1 0h3m5 0h1m1 0h1m5 0h1M1 3.5h1m1 0h3m1 0h1m1 0h1m2 0h3m1 0h1m2 0h1m1 0h3m1 0h1M1 4.5h1m1 0h3m1 0h1m2 0h1m1 0h3m1 0h2m1 0h1m1 0h3m1 0h1M1 5.5h1m1 0h3m1 0h1m1 0h2m1 0h4m1 0h1m1 0h1m1 0h3m1 0h1M1 6.5h1m5 0h1m2 0h1m4 0h1m3 0h1m5 0h1M1 7.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M10 8.5h3m1 0h1m1 0h2M1 9.5h1m2 0h8m1 0h1m1 0h1m1 0h2m2 0h1m1 0h3M1 10.5h1m6 0h1m1 0h1m1 0h3m1 0h1m3 0h5M1 11.5h1m1 0h2m2 0h6m2 0h3m1 0h1m2 0h1m2 0h1M1 12.5h2m3 0h1m1 0h1m1 0h1m1 0h1m3 0h2m1 0h1m2 0h4M3 13.5h1m1 0h5m1 0h2m1 0h4m1 0h1m5 0h1M1 14.5h1m1 0h1m2 0h1m1 0h2m3 0h1m1 0h4m2 0h1m2 0h1M1 15.5h3m1 0h1m1 0h1m2 0h2m3 0h5m1 0h5M1 16.5h1m1 0h3m3 0h1m1 0h1m1 0h4m2 0h2m1 0h2m1 0h1M1 17.5h1m4 0h3m2 0h3m3 0h5m1 0h2M9 18.5h1m1 0h2m4 0h1m3 0h1m1 0h2M1 19.5h7m1 0h1m3 0h3m1 0h1m1 0h1m1 0h1m3 0h1M1 20.5h1m5 0h1m1 0h1m1 0h2m1 0h1m2 0h1m3 0h1m3 0h1M1 21.5h1m1 0h3m1 0h1m1 0h4m1 0h1m1 0h6m2 0h2M1 22.5h1m1 0h3m1 0h1m1 0h1m3 0h2m3 0h2m4 0h2M1 23.5h1m1 0h3m1 0h1m2 0h3m1 0h1m1 0h1m1 0h1m2 0h5M1 24.5h1m5 0h1m2 0h1m1 0h3m1 0h1m3 0h2m1 0h3M1 25.5h7m1 0h1m1 0h4m2 0h1m4 0h1m2 0h1"/></svg></span>
+                <span class="lp">Escanea y guarda tu tarjeta</span>
+              </div>
+              <div class="minitel">
+                <div class="p">
+                  <div class="tar"><b>Tu negocio</b><span>50</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="cf-txt">Retor te entrega tu letrero en PDF, listo para imprimir.
+            Tu cliente lo escanea y la tarjeta llega a su Wallet.</p>
+          <p class="cf-pie">Con la cámara del celular. No instala nada.</p>
+        </article>
+
+        <article class="cf">
+          <div class="cf-cab"><span class="cf-num">3</span><h3>Tu equipo premia</h3></div>
+          <div class="cf-lienzo">
+            <div class="mostrador">
+              <div class="fila">
+                <span class="cli">Ana López</span>
+                <span class="caja">Caja 2 · Rodrigo</span>
+              </div>
+              <div class="saldo"><b>340</b><span>puntos</span></div>
+              <div class="btn2">Acreditar compra</div>
+              <div class="nota">Queda registrado quién lo hizo y a qué hora</div>
+            </div>
+          </div>
+          <p class="cf-txt">Cada cajero entra con su clave de turno desde una tableta
+            o un celular, y acredita la compra.</p>
+          <p class="cf-pie">El cliente nunca se acredita solo.</p>
+        </article>
+
+      </div>
     </div>
   </section>
 
