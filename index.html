@@ -216,7 +216,8 @@ nav a.enlace:hover{color:var(--azul)}
 .plt-franja{display:flex;height:.3rem}
 .plt-franja i{flex:1}
 
-.plt-cuerpo{padding:1rem 1.1rem 1.15rem;display:flex;flex-direction:column;gap:.85rem}
+.plt-cuerpo{padding:1rem 1.1rem 1.2rem;display:flex;flex-direction:column;gap:.85rem}
+.plt-caja{display:flex;flex-direction:column;gap:.7rem}
 
 .plt-cab{display:flex;align-items:flex-start;justify-content:space-between;gap:.8rem}
 .plt-marca{display:flex;flex-direction:column;gap:.2rem;min-width:0}
@@ -265,10 +266,10 @@ nav a.enlace:hover{color:var(--azul)}
   letter-spacing:.16em;color:var(--acento);margin-top:.35rem}
 
 .plt-giro{display:flex;align-items:center;justify-content:space-between;gap:.6rem;
-  border-top:1px solid var(--borde);padding-top:.7rem}
-.plt-giro b{font-size:.78rem;font-weight:700;color:var(--sobre)}
-.plt-giro span{font-size:.55rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--tenue);border:1px solid var(--borde);border-radius:.28rem;padding:.14rem .38rem}
+  margin:0;padding:0 .2rem}
+.plt-giro b{font-size:.88rem;font-weight:700;color:var(--tinta)}
+.plt-giro span{font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--azul-texto);background:var(--azul-suave);border-radius:.3rem;padding:.16rem .42rem}
 
 .apila{display:inline-grid}
 .apila > span{grid-area:1/1}
@@ -948,6 +949,7 @@ footer .copy{margin-top:2.5rem;padding-top:1.4rem;border-top:1px solid var(--lin
       </div>
 
       <div class="plantillas">
+        <div class="plt-caja">
         <article class="plt" style="--claro:#5C4230;--fondo:#3B2C22;--hondo:#211711;--acento:#E8D3A4;--acento-2:#C4A967;--sobre:#F6EFE2;--tenue:rgba(246,239,226,.6);--borde:rgba(246,239,226,.22);--placa:#F6EFE2;--barra-color:#211711">
           <div class="plt-franja"><i style="background:#F0E3BE"></i><i style="background:#C4A967"></i><i style="background:#6B4B2F"></i></div>
           <div class="plt-cuerpo">
@@ -970,18 +972,14 @@ footer .copy{margin-top:2.5rem;padding-top:1.4rem;border-top:1px solid var(--lin
               <p class="plt-regla" style="margin:.55rem 0 0">Un sello por cada visita.</p>
             </div>
 
-            <div class="plt-premio">
-              <span class="plt-etq">Tu premio</span>
-              <span class="v">Un café gratis</span>
-            </div>
 
-            <div class="plt-codigo"><svg viewBox="0 0 402 103" role="img" aria-label="Código de barras"><path stroke="var(--barra-color)" stroke-width="6" d="M3 103L3 0M60 103L60 0M87 103L87 0M102 103L102 0M156 103L156 0M180 103L180 0M213 103L213 0M234 103L234 0M267 103L267 0M312 103L312 0M333 103L333 0M348 103L348 0M357 103L357 0M366 103L366 0M399 103L399 0"/><path stroke="var(--barra-color)" stroke-width="3" d="M10.50 103L10.50 0M19.50 103L19.50 0M34.50 103L34.50 0M46.50 103L46.50 0M67.50 103L67.50 0M73.50 103L73.50 0M121.50 103L121.50 0M145.50 103L145.50 0M166.50 103L166.50 0M193.50 103L193.50 0M220.50 103L220.50 0M256.50 103L256.50 0M292.50 103L292.50 0M298.50 103L298.50 0M391.50 103L391.50 0"/><path stroke="var(--barra-color)" stroke-width="9" d="M112.50 103L112.50 0M136.50 103L136.50 0M202.50 103L202.50 0M247.50 103L247.50 0M280.50 103L280.50 0M322.50 103L322.50 0M382.50 103L382.50 0"/></svg><span class="plt-serie">K3QX 91LR</span></div>
-
-            <div class="plt-giro"><b>Cafetería</b><span>Sellos</span></div>
 
           </div>
         </article>
+        <p class="plt-giro"><b>Cafetería</b><span>Sellos</span></p>
+        </div>
 
+        <div class="plt-caja">
         <article class="plt" style="--claro:#2E6444;--fondo:#1E4430;--hondo:#0C2016;--acento:#F4E9CE;--acento-2:#7CC078;--sobre:#F4E9CE;--tenue:rgba(244,233,206,.6);--borde:rgba(244,233,206,.22);--placa:#F4E9CE;--barra-color:#0C2016">
           <div class="plt-franja"><i style="background:#7CC078"></i><i style="background:#F4E9CE"></i><i style="background:#C6382B"></i></div>
           <div class="plt-cuerpo">
@@ -1004,18 +1002,14 @@ footer .copy{margin-top:2.5rem;padding-top:1.4rem;border-top:1px solid var(--lin
               <p class="plt-regla" style="margin:.55rem 0 0">1 punto por cada $1 de consumo.</p>
             </div>
 
-            <div class="plt-premio">
-              <span class="plt-etq">Tu premio</span>
-              <span class="v">Una pizza mediana gratis</span>
-            </div>
 
-            <div class="plt-codigo"><svg viewBox="0 0 402 103" role="img" aria-label="Código de barras"><path stroke="var(--barra-color)" stroke-width="6" d="M3 103L3 0M60 103L60 0M87 103L87 0M102 103L102 0M156 103L156 0M180 103L180 0M213 103L213 0M234 103L234 0M267 103L267 0M312 103L312 0M333 103L333 0M348 103L348 0M357 103L357 0M366 103L366 0M399 103L399 0"/><path stroke="var(--barra-color)" stroke-width="3" d="M10.50 103L10.50 0M19.50 103L19.50 0M34.50 103L34.50 0M46.50 103L46.50 0M67.50 103L67.50 0M73.50 103L73.50 0M121.50 103L121.50 0M145.50 103L145.50 0M166.50 103L166.50 0M193.50 103L193.50 0M220.50 103L220.50 0M256.50 103L256.50 0M292.50 103L292.50 0M298.50 103L298.50 0M391.50 103L391.50 0"/><path stroke="var(--barra-color)" stroke-width="9" d="M112.50 103L112.50 0M136.50 103L136.50 0M202.50 103L202.50 0M247.50 103L247.50 0M280.50 103L280.50 0M322.50 103L322.50 0M382.50 103L382.50 0"/></svg><span class="plt-serie">R7QM 4K18</span></div>
-
-            <div class="plt-giro"><b>Pizzería</b><span>Puntos</span></div>
 
           </div>
         </article>
+        <p class="plt-giro"><b>Pizzería</b><span>Puntos</span></p>
+        </div>
 
+        <div class="plt-caja">
         <article class="plt" style="--claro:#33333A;--fondo:#212124;--hondo:#0C0C0E;--acento:#D8B57A;--acento-2:#8E6F3C;--sobre:#EDE7DD;--tenue:rgba(237,231,221,.56);--borde:rgba(198,162,104,.32);--placa:#EDE7DD;--barra-color:#0C0C0E">
           <div class="plt-franja"><i style="background:#E4C68E"></i><i style="background:#C6A268"></i><i style="background:#8E6F3C"></i></div>
           <div class="plt-cuerpo">
@@ -1038,18 +1032,14 @@ footer .copy{margin-top:2.5rem;padding-top:1.4rem;border-top:1px solid var(--lin
               <p class="plt-regla" style="margin:.55rem 0 0">Un sello por cada corte.</p>
             </div>
 
-            <div class="plt-premio">
-              <span class="plt-etq">Tu premio</span>
-              <span class="v">Corte de cortesía</span>
-            </div>
 
-            <div class="plt-codigo"><svg viewBox="0 0 402 103" role="img" aria-label="Código de barras"><path stroke="var(--barra-color)" stroke-width="6" d="M3 103L3 0M60 103L60 0M87 103L87 0M102 103L102 0M156 103L156 0M180 103L180 0M213 103L213 0M234 103L234 0M267 103L267 0M312 103L312 0M333 103L333 0M348 103L348 0M357 103L357 0M366 103L366 0M399 103L399 0"/><path stroke="var(--barra-color)" stroke-width="3" d="M10.50 103L10.50 0M19.50 103L19.50 0M34.50 103L34.50 0M46.50 103L46.50 0M67.50 103L67.50 0M73.50 103L73.50 0M121.50 103L121.50 0M145.50 103L145.50 0M166.50 103L166.50 0M193.50 103L193.50 0M220.50 103L220.50 0M256.50 103L256.50 0M292.50 103L292.50 0M298.50 103L298.50 0M391.50 103L391.50 0"/><path stroke="var(--barra-color)" stroke-width="9" d="M112.50 103L112.50 0M136.50 103L136.50 0M202.50 103L202.50 0M247.50 103L247.50 0M280.50 103L280.50 0M322.50 103L322.50 0M382.50 103L382.50 0"/></svg><span class="plt-serie">B8VN 45WZ</span></div>
-
-            <div class="plt-giro"><b>Barbería</b><span>Sellos</span></div>
 
           </div>
         </article>
+        <p class="plt-giro"><b>Barbería</b><span>Sellos</span></p>
+        </div>
 
+        <div class="plt-caja">
         <article class="plt" style="--claro:#C43428;--fondo:#9E1F16;--hondo:#5E0F0A;--acento:#F7D77E;--acento-2:#F0A08F;--sobre:#FFF3F1;--tenue:rgba(255,243,241,.62);--borde:rgba(255,243,241,.24);--placa:#FFF3F1;--barra-color:#5E0F0A">
           <div class="plt-franja"><i style="background:#E0705F"></i><i style="background:#F2C75B"></i><i style="background:#7A1109"></i></div>
           <div class="plt-cuerpo">
@@ -1072,18 +1062,14 @@ footer .copy{margin-top:2.5rem;padding-top:1.4rem;border-top:1px solid var(--lin
               <p class="plt-regla" style="margin:.55rem 0 0">1 punto por cada $1 de consumo.</p>
             </div>
 
-            <div class="plt-premio">
-              <span class="plt-etq">Tu premio</span>
-              <span class="v">$15 de descuento</span>
-            </div>
 
-            <div class="plt-codigo"><svg viewBox="0 0 402 103" role="img" aria-label="Código de barras"><path stroke="var(--barra-color)" stroke-width="6" d="M3 103L3 0M60 103L60 0M87 103L87 0M102 103L102 0M156 103L156 0M180 103L180 0M213 103L213 0M234 103L234 0M267 103L267 0M312 103L312 0M333 103L333 0M348 103L348 0M357 103L357 0M366 103L366 0M399 103L399 0"/><path stroke="var(--barra-color)" stroke-width="3" d="M10.50 103L10.50 0M19.50 103L19.50 0M34.50 103L34.50 0M46.50 103L46.50 0M67.50 103L67.50 0M73.50 103L73.50 0M121.50 103L121.50 0M145.50 103L145.50 0M166.50 103L166.50 0M193.50 103L193.50 0M220.50 103L220.50 0M256.50 103L256.50 0M292.50 103L292.50 0M298.50 103L298.50 0M391.50 103L391.50 0"/><path stroke="var(--barra-color)" stroke-width="9" d="M112.50 103L112.50 0M136.50 103L136.50 0M202.50 103L202.50 0M247.50 103L247.50 0M280.50 103L280.50 0M322.50 103L322.50 0M382.50 103L382.50 0"/></svg><span class="plt-serie">M97W P67V</span></div>
-
-            <div class="plt-giro"><b>Restaurante</b><span>Puntos</span></div>
 
           </div>
         </article>
+        <p class="plt-giro"><b>Restaurante</b><span>Puntos</span></p>
+        </div>
 
+        <div class="plt-caja">
         <article class="plt" style="--claro:#4C8A74;--fondo:#33604F;--hondo:#173229;--acento:#DCEDE6;--acento-2:#9FD3BF;--sobre:#EEF7F3;--tenue:rgba(238,247,243,.62);--borde:rgba(238,247,243,.24);--placa:#EEF7F3;--barra-color:#173229">
           <div class="plt-franja"><i style="background:#9FD3BF"></i><i style="background:#DCEDE6"></i><i style="background:#2C5B4A"></i></div>
           <div class="plt-cuerpo">
@@ -1106,18 +1092,14 @@ footer .copy{margin-top:2.5rem;padding-top:1.4rem;border-top:1px solid var(--lin
               <p class="plt-regla" style="margin:.55rem 0 0">1 punto por cada $1 de consumo.</p>
             </div>
 
-            <div class="plt-premio">
-              <span class="plt-etq">Tu premio</span>
-              <span class="v">Un masaje de cortesía</span>
-            </div>
 
-            <div class="plt-codigo"><svg viewBox="0 0 402 103" role="img" aria-label="Código de barras"><path stroke="var(--barra-color)" stroke-width="6" d="M3 103L3 0M60 103L60 0M87 103L87 0M102 103L102 0M156 103L156 0M180 103L180 0M213 103L213 0M234 103L234 0M267 103L267 0M312 103L312 0M333 103L333 0M348 103L348 0M357 103L357 0M366 103L366 0M399 103L399 0"/><path stroke="var(--barra-color)" stroke-width="3" d="M10.50 103L10.50 0M19.50 103L19.50 0M34.50 103L34.50 0M46.50 103L46.50 0M67.50 103L67.50 0M73.50 103L73.50 0M121.50 103L121.50 0M145.50 103L145.50 0M166.50 103L166.50 0M193.50 103L193.50 0M220.50 103L220.50 0M256.50 103L256.50 0M292.50 103L292.50 0M298.50 103L298.50 0M391.50 103L391.50 0"/><path stroke="var(--barra-color)" stroke-width="9" d="M112.50 103L112.50 0M136.50 103L136.50 0M202.50 103L202.50 0M247.50 103L247.50 0M280.50 103L280.50 0M322.50 103L322.50 0M382.50 103L382.50 0"/></svg><span class="plt-serie">P6DF 23YU</span></div>
-
-            <div class="plt-giro"><b>Spa</b><span>Puntos</span></div>
 
           </div>
         </article>
+        <p class="plt-giro"><b>Spa</b><span>Puntos</span></p>
+        </div>
 
+        <div class="plt-caja">
         <article class="plt" style="--claro:#3C68AD;--fondo:#28497C;--hondo:#12234A;--acento:#A9CCEC;--acento-2:#6FA8DF;--sobre:#EEF3FC;--tenue:rgba(238,243,252,.62);--borde:rgba(238,243,252,.24);--placa:#EEF3FC;--barra-color:#12234A">
           <div class="plt-franja"><i style="background:#6FA8DF"></i><i style="background:#A9CCEC"></i><i style="background:#1B3563"></i></div>
           <div class="plt-cuerpo">
@@ -1140,17 +1122,12 @@ footer .copy{margin-top:2.5rem;padding-top:1.4rem;border-top:1px solid var(--lin
               <p class="plt-regla" style="margin:.55rem 0 0">Un sello por cada lavada.</p>
             </div>
 
-            <div class="plt-premio">
-              <span class="plt-etq">Tu premio</span>
-              <span class="v">Una lavada gratis</span>
-            </div>
 
-            <div class="plt-codigo"><svg viewBox="0 0 402 103" role="img" aria-label="Código de barras"><path stroke="var(--barra-color)" stroke-width="6" d="M3 103L3 0M60 103L60 0M87 103L87 0M102 103L102 0M156 103L156 0M180 103L180 0M213 103L213 0M234 103L234 0M267 103L267 0M312 103L312 0M333 103L333 0M348 103L348 0M357 103L357 0M366 103L366 0M399 103L399 0"/><path stroke="var(--barra-color)" stroke-width="3" d="M10.50 103L10.50 0M19.50 103L19.50 0M34.50 103L34.50 0M46.50 103L46.50 0M67.50 103L67.50 0M73.50 103L73.50 0M121.50 103L121.50 0M145.50 103L145.50 0M166.50 103L166.50 0M193.50 103L193.50 0M220.50 103L220.50 0M256.50 103L256.50 0M292.50 103L292.50 0M298.50 103L298.50 0M391.50 103L391.50 0"/><path stroke="var(--barra-color)" stroke-width="9" d="M112.50 103L112.50 0M136.50 103L136.50 0M202.50 103L202.50 0M247.50 103L247.50 0M280.50 103L280.50 0M322.50 103L322.50 0M382.50 103L382.50 0"/></svg><span class="plt-serie">H1TC 76XE</span></div>
-
-            <div class="plt-giro"><b>Lavado de autos</b><span>Sellos</span></div>
 
           </div>
         </article>
+        <p class="plt-giro"><b>Lavado de autos</b><span>Sellos</span></p>
+        </div>
       </div>
 
       <p class="nota-plantillas">No hace falta que seas diseñador. Eliges un color,
