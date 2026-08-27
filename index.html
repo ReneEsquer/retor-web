@@ -124,17 +124,19 @@ nav a.enlace:hover{color:var(--azul)}
   grid-template-columns:minmax(0,1.02fr) minmax(0,.92fr) minmax(0,.72fr);
   gap:clamp(1.5rem,3.2vw,3rem);align-items:center}
 
-.hero-texto h1{margin-bottom:1rem}
+.hero-texto h1{margin-bottom:1rem;font-size:clamp(1.6rem,2.55vw,2.1rem);
+  letter-spacing:-.03em;line-height:1.1}
+.hero-texto .rotulo{margin-bottom:.7rem}
 .hero-texto .entrada{max-width:26rem}
 
 /* El celular del centro */
 .hero-escena{display:flex;justify-content:center}
-.tel{width:15.5rem;border-radius:2.4rem;background:#0B0B0D;padding:.5rem;
+.tel{width:16rem;aspect-ratio:393/852;border-radius:2.6rem;background:#0B0B0D;padding:.5rem;
   box-shadow:0 30px 60px -26px rgba(0,0,0,.75);position:relative}
 .tel::before{content:"";position:absolute;left:50%;top:1rem;transform:translateX(-50%);
   width:4rem;height:1.1rem;border-radius:.7rem;background:#0B0B0D;z-index:3}
-.tel-pantalla{border-radius:2rem;overflow:hidden;background:#EEF3F9;
-  display:flex;flex-direction:column;padding-bottom:.9rem}
+.tel-pantalla{height:100%;border-radius:2.2rem;overflow:hidden;background:#EEF3F9;
+  display:flex;flex-direction:column;padding-bottom:1.1rem}
 .tel-barra{display:flex;align-items:center;justify-content:space-between;
   padding:.85rem 1.05rem .6rem}
 .tel-barra .pin{width:1.45rem;height:1.45rem;border-radius:50%;background:#DCE4EE;
@@ -177,26 +179,28 @@ nav a.enlace:hover{color:var(--azul)}
 
 /* El contador apilado */
 .hero-cuenta{display:inline-grid}
-.hero-cuenta > span{grid-area:1/1;opacity:0}
-.hero-cuenta > span:last-child{opacity:1}
+.hero-cuenta > span{grid-area:1/1}
+.hero-cuenta > .final{opacity:1}
+.hero-cuenta > .paso{opacity:0}
 
 /* Columna de Wallet */
 .hero-wallet{display:flex;flex-direction:column;gap:1rem;align-items:flex-start}
 .wallet-frase{font-size:.98rem;line-height:1.5;color:rgba(255,255,255,.78);margin:0}
 .wallet-frase b{color:#fff;font-weight:700}
-.insignia{display:flex;align-items:center;gap:.6rem;text-decoration:none;
-  background:#0C1626;border:1px solid rgba(255,255,255,.22);border-radius:.7rem;
-  padding:.58rem .7rem .58rem .85rem;width:100%;max-width:15.5rem;position:relative;
-  transition:transform .18s,border-color .18s}
-.insignia:hover{transform:translateY(-2px);border-color:rgba(242,199,91,.6)}
-.insignia .ins-ico{width:1.55rem;height:1.55rem;flex:none;display:block}
-.insignia .ins-txt{display:flex;flex-direction:column;line-height:1.15;min-width:0}
-.insignia .ins-txt small{font-size:.6rem;color:rgba(255,255,255,.6);letter-spacing:.02em}
-.insignia .ins-txt b{font-size:.86rem;font-weight:700;color:#fff;letter-spacing:-.015em}
-.insignia.apagada{filter:grayscale(1);opacity:.5;cursor:default;pointer-events:none}
-.insignia .prox{margin-left:auto;flex:none;
-  font-size:.5rem;font-style:normal;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:#fff;background:rgba(255,255,255,.18);border-radius:.25rem;padding:.12rem .3rem}
+/* El botón oficial de Google, tal como Google lo entrega. */
+.insignia-google{display:inline-block;line-height:0;border-radius:1.72rem;
+  transition:transform .18s}
+.insignia-google:hover{transform:translateY(-2px)}
+.insignia-google img{width:100%;max-width:14.95rem;height:auto;display:block}
+
+/* Apple todavía no existe en Retor, así que NO se usa su botón oficial. */
+.apple-pendiente{display:flex;align-items:center;gap:.6rem;
+  border:1px dashed rgba(255,255,255,.3);border-radius:.9rem;
+  padding:.6rem .8rem;width:100%;max-width:14.95rem}
+.apple-pendiente .ap-ico{width:1.5rem;height:1.5rem;flex:none;display:block;opacity:.55}
+.apple-pendiente .ap-txt{display:flex;flex-direction:column;line-height:1.2}
+.apple-pendiente .ap-txt b{font-size:.84rem;font-weight:700;color:rgba(255,255,255,.66)}
+.apple-pendiente .ap-txt small{font-size:.62rem;color:var(--dorado);letter-spacing:.04em}
 .hero-wallet .sellos{margin-top:.35rem}
 
 @media (max-width:66rem){
@@ -215,21 +219,17 @@ nav a.enlace:hover{color:var(--azul)}
   @media (prefers-reduced-motion: no-preference){
     @keyframes h-crecer{from{transform:scaleX(0)}to{transform:scaleX(1)}}
     @keyframes h-ventana{from{opacity:1}to{opacity:1}}
-    .hero-cuenta > span,
-    .hero-cuenta > span:last-child{opacity:0}
-    .hero-cuenta > span{
+    .hero-cuenta > .paso{
       animation-name:h-ventana;animation-duration:1ms;animation-fill-mode:none;
-      animation-timing-function:linear;animation-timeline:scroll(root block)}
-    .hero-cuenta > span:last-child{animation-fill-mode:forwards}
-    .hero-cuenta > span:nth-child(1){animation-range:0px 90px}
-    .hero-cuenta > span:nth-child(2){animation-range:90px 175px}
-    .hero-cuenta > span:nth-child(3){animation-range:175px 260px}
-    .hero-cuenta > span:nth-child(4){animation-range:260px 345px}
-    .hero-cuenta > span:nth-child(5){animation-range:345px 430px}
-    .hero-cuenta > span:nth-child(6){animation-range:430px 100%}
+      animation-timing-function:linear;animation-timeline:scroll()}
+    .hero-cuenta > .paso:nth-of-type(2){animation-range:0px 42px}
+    .hero-cuenta > .paso:nth-of-type(3){animation-range:42px 82px}
+    .hero-cuenta > .paso:nth-of-type(4){animation-range:82px 122px}
+    .hero-cuenta > .paso:nth-of-type(5){animation-range:122px 162px}
+    .hero-cuenta > .paso:nth-of-type(6){animation-range:162px 202px}
     .pr-barra i{animation-name:h-crecer;animation-duration:1ms;animation-fill-mode:both;
-      animation-timing-function:linear;animation-timeline:scroll(root block);
-      animation-range:0px 470px}
+      animation-timing-function:linear;animation-timeline:scroll();
+      animation-range:0px 220px}
   }
 }
 
@@ -488,7 +488,7 @@ footer .copy{margin-top:2.5rem;padding-top:1.4rem;border-top:1px solid var(--lin
 
       <div class="hero-texto">
         <p class="rotulo">Programas de lealtad digitales</p>
-        <h1>La tarjeta de puntos que tu cliente ya no va a perder.</h1>
+        <h1>Retor, tarjetas digitales de lealtad para tu negocio.</h1>
         <p class="entrada">Retor pone la tarjeta de fidelidad de tu negocio dentro
           de Google Wallet. Tu cliente no descarga ninguna aplicación, y siempre la
           trae encima porque vive en el mismo lugar que sus tarjetas de embarque.</p>
@@ -538,7 +538,7 @@ footer .copy{margin-top:2.5rem;padding-top:1.4rem;border-top:1px solid var(--lin
                   <span class="pr-etq">Puntos acumulados</span>
                   <span class="pr-cifra">
                     <span class="n hero-cuenta">
-                      <span>0</span><span>200</span><span>450</span><span>700</span><span>950</span><span>1,240</span>
+                      <span class="final">1,240</span><span class="paso">0</span><span class="paso">200</span><span class="paso">450</span><span class="paso">700</span><span class="paso">950</span>
                     </span>
                     <span class="de">de 2,000</span>
                   </span>
@@ -566,28 +566,22 @@ footer .copy{margin-top:2.5rem;padding-top:1.4rem;border-top:1px solid var(--lin
       <div class="hero-wallet">
         <p class="wallet-frase">Se guarda en el Wallet del cliente.<br><b>Sin instalar nada.</b></p>
 
-        <a class="insignia" href="#como-funciona">
-          <svg class="ins-ico" viewBox="0 0 24 24" aria-hidden="true">
-            <rect x="2" y="7" width="20" height="13" rx="3" fill="#F4F8FC"/>
-            <rect x="4.5" y="4" width="15" height="3.4" rx="1.7" fill="#9AA6B5"/>
-            <path d="M2 12.4h20V17a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-4.6Z" fill="#4285F4"/>
-            <path d="M2 12.4h6.6L11 20H5a3 3 0 0 1-3-3v-4.6Z" fill="#34A853"/>
-            <path d="M13.6 12.4H22V17a3 3 0 0 1-3 3h-2.6l-2.8-7.6Z" fill="#FBBC04"/>
-            <path d="M16.4 20H11l-2.4-7.6h5.4L16.4 20Z" fill="#EA4335"/>
-          </svg>
-          <span class="ins-txt"><small>Guárdala en</small><b>Google Wallet</b></span>
+        <a class="insignia-google" href="#como-funciona">
+          <img src="insignias/google-wallet.svg" width="239" height="55"
+               alt="Añadir a Google Wallet">
         </a>
 
-        <span class="insignia apagada" aria-label="Apple Wallet, próximamente">
-          <svg class="ins-ico" viewBox="0 0 24 24" aria-hidden="true">
-            <rect x="2" y="7" width="20" height="13" rx="3" fill="#F4F8FC"/>
-            <rect x="4.5" y="4" width="15" height="3.4" rx="1.7" fill="#9AA6B5"/>
-            <rect x="2" y="12.4" width="20" height="7.6" rx="3" fill="#4A5566"/>
-            <rect x="2" y="12.4" width="20" height="2.4" fill="#6B7788"/>
+        <div class="apple-pendiente">
+          <svg class="ap-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="2" y="6.5" width="20" height="13.5" rx="3.2" fill="#E7EDF5"/>
+            <rect x="4.6" y="3.4" width="14.8" height="3.4" rx="1.7" fill="#9AA6B5"/>
+            <rect x="2" y="12" width="20" height="8" rx="3.2" fill="#5A6675"/>
           </svg>
-          <span class="ins-txt"><small>Guárdala en</small><b>Apple Wallet</b></span>
-          <em class="prox">Próximamente</em>
-        </span>
+          <span class="ap-txt">
+            <b>Apple Wallet</b>
+            <small>Próximamente</small>
+          </span>
+        </div>
 
         <ul class="sellos">
           <li>Sin apps que instalar</li>
