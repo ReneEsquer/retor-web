@@ -472,7 +472,8 @@ nav a.enlace:hover{color:var(--azul)}
 .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(2rem,5vw,4rem);
   align-items:center}
 .hero .entrada{margin:1.25rem 0 2rem;max-width:32rem}
-.hero .ctas{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:1.6rem}
+.hero .ctas{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:.7rem}
+.hero .nota-cta{font-size:.86rem;color:rgba(255,255,255,.72);margin:0 0 1.6rem}
 .sellos{display:flex;flex-wrap:wrap;gap:.5rem .55rem;list-style:none;margin:0;padding:0}
 .sellos li{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.82);
   border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);
@@ -633,6 +634,8 @@ nav a.enlace:hover{color:var(--azul)}
 /* ── Cierre ─────────────────────────────────────────────────────── */
 .cierre{text-align:center;max-width:34rem;margin:0 auto}
 .cierre .entrada{margin:1rem auto 2rem}
+.cierre .nota-cierre{font-size:.88rem;color:rgba(255,255,255,.74);margin:1.2rem auto 0;max-width:28rem}
+.cierre .nota-cierre a{color:#F7D77E}
 
 /* ── Pie ────────────────────────────────────────────────────────── */
 footer{background:var(--fondo-1);border-top:1px solid var(--linea-2);
@@ -710,7 +713,7 @@ footer .copy{margin-top:2.5rem;padding-top:1.4rem;border-top:1px solid var(--lin
       <a class="enlace" href="#ejemplos">Ejemplos</a>
       <a class="enlace" href="#preguntas">Preguntas</a>
       <a class="enlace" href="soporte.html">Atención a clientes</a>
-      <a class="btn btn-azul" href="#contacto">Contáctanos</a>
+      <a class="btn btn-azul" href="https://app.retor.com.mx/registro">Empieza gratis</a>
     </nav>
   </div>
 </header>
@@ -734,9 +737,10 @@ footer .copy{margin-top:2.5rem;padding-top:1.4rem;border-top:1px solid var(--lin
           <li><b>Sistema antifraude</b>, con el registro de qué cajero acreditó cada punto</li>
         </ul>
         <div class="ctas">
-          <a class="btn btn-oro btn-g" href="#contacto">Escríbenos</a>
+          <a class="btn btn-oro btn-g" href="https://app.retor.com.mx/registro">Empieza gratis</a>
           <a class="btn btn-claro btn-g" href="#como-funciona">Ver cómo funciona</a>
         </div>
+        <p class="nota-cta">30 días de prueba. No se solicitan datos de pago.</p>
       </div>
 
       <div class="hero-escena">
@@ -1230,13 +1234,14 @@ footer .copy{margin-top:2.5rem;padding-top:1.4rem;border-top:1px solid var(--lin
         </details>
         <details>
           <summary>¿Cuánto cuesta?</summary>
-          <p>Depende del tamaño de tu negocio y cuántas sucursales tienes.
+          <p>Puedes empezar con 30 días de prueba, sin datos de pago. Después el
+            precio depende del tamaño de tu negocio y cuántas sucursales tienes.
             Escríbenos y te armamos una propuesta.</p>
         </details>
         <details>
           <summary>¿Necesito saber de tecnología para usarlo?</summary>
-          <p>No. Tu personal solo necesita un navegador y su clave de turno.
-            Nosotros configuramos todo lo demás contigo.</p>
+          <p>No. Creas tu cuenta desde esta página y eliges tus reglas en tu
+            panel. Tu personal solo necesita un navegador y su clave de turno.</p>
         </details>
         <details>
           <summary>¿Qué pasa si mi cliente pierde el teléfono?</summary>
@@ -1245,9 +1250,9 @@ footer .copy{margin-top:2.5rem;padding-top:1.4rem;border-top:1px solid var(--lin
         </details>
         <details>
           <summary>¿Cuánto tarda en quedar listo?</summary>
-          <p>La configuración de tu programa se hace en una sesión contigo. Después
-            hay que esperar la aprobación de Apple y de Google para tu tarjeta, que
-            es el paso que no depende de nosotros.</p>
+          <p>Tu cuenta queda lista al registrarte y la tarjeta para Google Wallet
+            se genera en ese momento. Lo que lleva más tiempo es lo tuyo: definir
+            el premio y cuántos puntos cuesta alcanzarlo.</p>
         </details>
         <details>
           <summary>¿Qué datos de mis clientes se guardan?</summary>
@@ -1296,9 +1301,11 @@ footer .copy{margin-top:2.5rem;padding-top:1.4rem;border-top:1px solid var(--lin
     <div class="wrap cierre">
       <p class="rotulo" style="margin-left:auto;margin-right:auto">Empieza hoy</p>
       <h2>¿Tienes un negocio y quieres probarlo?</h2>
-      <p class="entrada">Cuéntanos de tu negocio y te decimos si Retor te sirve y qué
-        necesitas para arrancar. Sin compromiso.</p>
-      <a class="btn btn-oro btn-g" href="mailto:contacto@retor.com.mx">Escríbenos</a>
+      <p class="entrada">Crea tu cuenta en un minuto y arma tu programa con tus
+        colores y tus reglas. 30 días de prueba, sin datos de pago.</p>
+      <a class="btn btn-oro btn-g" href="https://app.retor.com.mx/registro">Empieza gratis</a>
+      <p class="nota-cierre">¿Prefieres que lo veamos juntos? Escríbenos a
+        <a href="mailto:contacto@retor.com.mx">contacto@retor.com.mx</a>.</p>
     </div>
   </section>
 
